@@ -1,0 +1,84 @@
+.bgbloghead{background-color:#15171a; padding:40px 0px; background: url('../../src/assets/images/blogbgimg.jpg');}
+
+.blogareahead{padding:40px 0px; text-align: center;}
+.blogareahead h1{font-size:40px; color: #ffffff; text-align: center;}
+.blogareahead span{text-align: center; color: #ffffff; font-size:18px;}
+
+.blogbreadcrumbarea{padding:15px 0px 0px 0px; text-align: center;}
+.blogbreadcrumbarea ol{float: inherit; text-align: center;}
+.blogbreadcrumbarea ol li{font-size:16px; text-align: center; float: inherit;}
+.blogbreadcrumbarea ol li a{font-size:16px; color: #a9a9a9; text-align: center;}
+.blogbreadcrumbarea ol li:last-child{color: #f9f9f9;}
+
+.firstblogbox{float: left; width:100%;}
+.firstblogarea{background: #fff; padding:0px;  margin-bottom: 50px;
+        box-shadow:2px 3px 10px -6px #999;  margin-top: -100px;margin-right: 15px;
+        margin-left: 15px; border-radius: 4px; display: flex;}
+.blogfullimg{position: relative;}
+.blogfullimg img{border-radius:5px 0px 0px 5px; max-width:600px; height: 350px;}
+.blogfullcontent{padding:20px;}
+.blogfullcontent h1{margin-bottom:20px; font-size:25px;}
+.blogfullcontent .postname{color: #036cd5;}
+.blogfullcontent .postcontent{font-size:15px; color: #222;}
+.blogfullcontent .authnamepost{padding-top:20px; display: flex; align-items: center; justify-content:space-between;}
+.blogfullcontent .authnamepost span{color:#15171a; font-size:15px; padding-left:10px}
+
+.blogmainbox{-ms-flex: 1 1 300px; flex: 1 1 300px; display: -ms-flexbox;  display: flex;
+    -ms-flex-direction: column; flex-direction: column; height:530px;
+    overflow: hidden;margin:20px 0px; min-height: 300px;  background: #fff 50%;  background-size: cover; border-radius: 5px;
+    box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
+    transition: all .5s ease;}
+.blogimg{margin:0px;}
+.blogimg img{width: 100%; height: 250px; object-fit:fill; border-radius: 5px 5px 0px 0px;}
+
+.blogmainbox .blogcontentbox{padding:10px 20px;}
+.contentarea{padding:0px;}
+.contentarea .blogh1{padding: 10px 0px;}
+.contentarea .blogh1 h1{font-size: 1.4rem; line-height:1.2; color:#15171a;}
+.contentarea .blogdescription{position: relative;}
+.contentarea .blogdescription p{font-size:15px; color:#15171a; line-height:1.5;}
+
+.postarticleauthar{display: flex; justify-content: space-between; align-items: center; width:80%; margin-top:20px;
+    position: absolute; bottom: 30px;}
+.postarticleauthar li{display:inline-block;}
+.postarticleauthar li span.autharname{color:#222; font-size:15px;}
+.postarticleauthar li span{color:#888;}
+
+.blognav {
+    -ms-flex-align: center;  align-items: center; overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-right: 10px;  padding-bottom: 30px;
+    letter-spacing: .4px;
+    white-space: nowrap;
+    -ms-overflow-scrolling: touch;
+    display: flex;
+    overflow-y: hidden;
+}
+
+.blognavarea {display: -ms-flexbox; display: flex; margin: 0px; padding: 0px; list-style: none;}
+.blognavarea li{list-style: none;}
+.blognavarea li a { padding: 10px 12px; color: #fff; opacity: .8; font-size:0.9rem; font-weight: 400;}
+.blognavarea li a:hover{color: #fff; opacity:1;}
+
+#noblogpage{margin-top:-10px;}
+
+@media (max-width:767px) {
+    .firstblogarea {flex-direction: column;margin-top:0px;}
+    .blogfullimg img{max-width:100%; border-radius: 5px 5px 0px 0px;}
+    .blognav{ padding-bottom: 10px;}
+    #noblogpage{margin-top:-20px;}
+}
+
+
+@media only screen and (min-width: 200px) and (max-width: 520px){
+.blogareahea span {font-size: 18px;}
+.blogareahead h1{font-size: 24px;}
+.blogfullimg img{object-fit: cover;}
+.blogfullcontent h1{font-size: 20px;}
+.contentarea .blogh1 h1{    font-size: 20px;}
+.bgbloghead .container .row .col-md-12 .details-hd {font-size: 20px !important;}
+.blogContent h2{font-size: 22px;}
+
+
+
+}

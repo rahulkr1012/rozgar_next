@@ -1,0 +1,547 @@
+.rg_downloadApp{padding: 0 6px 20px;
+    position: absolute;
+    width: 340px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;}
+    
+.btndownloadApp{background: #ff7a00;
+    border-radius: 5px;
+    padding: 10px 24px;
+    width: 92%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    color: #fff;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;}    
+  
+
+.rg_downloadApp {display: flex;align-items: center;}
+.rg_downloadApp .btndownloadApp .arrowed{margin-left: 20px;}
+.rg_downloadApp .btndownloadApp{display: flex;align-items: center;justify-content: center;}
+.DownloadAppCta_arrowAnimtion__3DGlm {
+    visibility: hidden;
+    opacity: 0;
+    background-color: unset;
+    -webkit-animation: DownloadAppCta_browseJobFloatButtonExpandLeft__2Lk6d 1s linear 1.5s forwards;
+    -moz-animation: DownloadAppCta_browseJobFloatButtonExpandLeft__2Lk6d 1s linear 1.5s forwards;
+    animation: DownloadAppCta_browseJobFloatButtonExpandLeft__2Lk6d 1s linear 1.5s forwards;
+    position: relative;
+    top: -2px;
+    left: 8px;
+}
+
+.DownloadAppCta_arrowAnimtion__3DGlm span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    margin-left: -6px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    -webkit-animation: DownloadAppCta_sdb07__1ruMS 2s infinite;
+    -moz-animation: DownloadAppCta_sdb07__1ruMS 2s infinite;
+    animation: DownloadAppCta_sdb07__1ruMS 2s infinite;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ .DownloadAppCta_arrowAnimtion__3DGlm span:first-of-type {
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;
+    animation-delay: 0s;
+}
+.DownloadAppCta_arrowAnimtion__3DGlm span:nth-of-type(2) {
+    left: 8px;
+    -webkit-animation-delay: .15s;
+    -moz-animation-delay: .15s;
+    animation-delay: .15s;
+}
+
+
+ .DownloadAppCta_arrowAnimtion__3DGlm span:nth-of-type(3) {
+    left: 16px;
+    -webkit-animation-delay: .3s;
+    -moz-animation-delay: .3s;
+    animation-delay: .3s;
+}
+
+@-webkit-keyframes DownloadAppCta_sdb07__1ruMS {
+    0% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+@-moz-keyframes DownloadAppCta_sdb07__1ruMS {
+    0% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes DownloadAppCta_sdb07__1ruMS {
+    0% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes DownloadAppCta_browseJobFloatButtonExpandLeft__2Lk6d {
+    0%,10%,20% {
+        visibility: hidden;
+        opacity: 0;
+        width: 0
+    }
+
+    40%,50%,60%,70%,80% {
+        opacity: 0;
+        width: 25px;
+        visibility: hidden
+    }
+
+    to {
+        width: 25px;
+        visibility: visible;
+        opacity: 1
+    }
+}
+
+@-moz-keyframes DownloadAppCta_browseJobFloatButtonExpandLeft__2Lk6d {
+    0%,10%,20% {
+        visibility: hidden;
+        opacity: 0;
+        width: 0
+    }
+
+    40%,50%,60%,70%,80% {
+        opacity: 0;
+        width: 25px;
+        visibility: hidden
+    }
+
+    to {
+        width: 25px;
+        visibility: visible;
+        opacity: 1
+    }
+}
+
+@keyframes DownloadAppCta_browseJobFloatButtonExpandLeft__2Lk6d {
+    0%,10%,20% {
+        visibility: hidden;
+        opacity: 0;
+        width: 0
+    }
+
+    40%,50%,60%,70%,80% {
+        opacity: 0;
+        width: 25px;
+        visibility: hidden
+    }
+
+    to {
+        width: 25px;
+        visibility: visible;
+        opacity: 1
+    }
+}
+
+
+
+
+.rg_fab_container__22WmJ {
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 90px;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none
+}
+
+.rg_fab_container__22WmJ{display: none;}
+
+.rg_fab_container__22WmJ.rg_FixedActionButton_slideUp__10w8J {
+    visibility: visible;
+    -webkit-animation-name: FixedActionButton_browseJobFabMoveUp__3uEiA;
+    -moz-animation-name: FixedActionButton_browseJobFabMoveUp__3uEiA;
+    animation-name: FixedActionButton_browseJobFabMoveUp__3uEiA;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out
+}
+
+.rg_fab_container__22WmJ.FixedActionButton_slideDown__2A758 {
+    visibility: visible;
+    -webkit-animation-name: FixedActionButton_browseJobFabMoveDown__uzuFG;
+    -moz-animation-name: FixedActionButton_browseJobFabMoveDown__uzuFG;
+    animation-name: FixedActionButton_browseJobFabMoveDown__uzuFG;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out
+}
+
+.rg_fab_container__22WmJ.FixedActionButton_hidden__sL17j {
+    visibility: hidden
+}
+
+.rg_fab_container__22WmJ .FixedActionButton_btn_container__1bJDw {
+    pointer-events: auto;
+    -webkit-box-shadow: 0 0 1px rgba(24,193,163,.05);
+    box-shadow: 0 0 1px rgba(24,193,163,.05);
+    height: 32px;
+    background: #e81c28;
+    border-radius: 5px;
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: left;
+    justify-content: left;
+    -moz-box-align: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    padding: 6px 12px
+}
+
+.rg_fab_container__22WmJ .FixedActionButton_btn_container__1bJDw .FixedActionButton_btn_content__6kVvO {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+    color: #fff;
+    -webkit-animation-name: FixedActionButton_browseJobFabGrow__23Qut;
+    -moz-animation-name: FixedActionButton_browseJobFabGrow__23Qut;
+    animation-name: FixedActionButton_browseJobFabGrow__23Qut;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-delay: 1.5s;
+    -moz-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+    -webkit-transition: width;
+    -moz-transition: width;
+    transition: width
+}
+
+.rg_fab_container__22WmJ .FixedActionButton_btn_container__1bJDw .FixedActionButton_arrowAnimtion__zhciW {
+    visibility: hidden;
+    opacity: 0;
+    background-color: unset;
+    -webkit-animation: FixedActionButton_browseJobFloatButtonExpandLeft__3Q4YM 1s linear 1.5s forwards;
+    -moz-animation: FixedActionButton_browseJobFloatButtonExpandLeft__3Q4YM 1s linear 1.5s forwards;
+    animation: FixedActionButton_browseJobFloatButtonExpandLeft__3Q4YM 1s linear 1.5s forwards;
+    position: relative;
+    top: -2px
+}
+
+.rg_fab_container__22WmJ .FixedActionButton_btn_container__1bJDw .FixedActionButton_arrowAnimtion__zhciW span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    margin-left: -6px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    -webkit-animation: FixedActionButton_sdb07__21Vct 2s infinite;
+    -moz-animation: FixedActionButton_sdb07__21Vct 2s infinite;
+    animation: FixedActionButton_sdb07__21Vct 2s infinite;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.rg_fab_container__22WmJ .FixedActionButton_btn_container__1bJDw .FixedActionButton_arrowAnimtion__zhciW span:first-of-type {
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;
+    animation-delay: 0s
+}
+
+.rg_fab_container__22WmJ .FixedActionButton_btn_container__1bJDw .FixedActionButton_arrowAnimtion__zhciW span:nth-of-type(2) {
+    left: 8px;
+    -webkit-animation-delay: .15s;
+    -moz-animation-delay: .15s;
+    animation-delay: .15s
+}
+
+.rg_fab_container__22WmJ .FixedActionButton_btn_container__1bJDw .FixedActionButton_arrowAnimtion__zhciW span:nth-of-type(3) {
+    left: 16px;
+    -webkit-animation-delay: .3s;
+    -moz-animation-delay: .3s;
+    animation-delay: .3s
+}
+
+@-webkit-keyframes FixedActionButton_sdb07__21Vct {
+    0% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+@-moz-keyframes FixedActionButton_sdb07__21Vct {
+    0% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes FixedActionButton_sdb07__21Vct {
+    0% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes FixedActionButton_browseJobFabGrow__23Qut {
+    0% {
+        margin-right: 0
+    }
+
+    to {
+        margin-right: 10px
+    }
+}
+
+@-moz-keyframes FixedActionButton_browseJobFabGrow__23Qut {
+    0% {
+        margin-right: 0
+    }
+
+    to {
+        margin-right: 10px
+    }
+}
+
+@keyframes FixedActionButton_browseJobFabGrow__23Qut {
+    0% {
+        margin-right: 0
+    }
+
+    to {
+        margin-right: 10px
+    }
+}
+
+@-webkit-keyframes FixedActionButton_browseJobFloatButtonExpandLeft__3Q4YM {
+    0%,10%,20% {
+        visibility: hidden;
+        opacity: 0;
+        width: 0
+    }
+
+    40%,50%,60%,70%,80% {
+        opacity: 0;
+        width: 25px;
+        visibility: hidden
+    }
+
+    to {
+        width: 25px;
+        visibility: visible;
+        opacity: 1
+    }
+}
+
+@-moz-keyframes FixedActionButton_browseJobFloatButtonExpandLeft__3Q4YM {
+    0%,10%,20% {
+        visibility: hidden;
+        opacity: 0;
+        width: 0
+    }
+
+    40%,50%,60%,70%,80% {
+        opacity: 0;
+        width: 25px;
+        visibility: hidden
+    }
+
+    to {
+        width: 25px;
+        visibility: visible;
+        opacity: 1
+    }
+}
+
+@keyframes FixedActionButton_browseJobFloatButtonExpandLeft__3Q4YM {
+    0%,10%,20% {
+        visibility: hidden;
+        opacity: 0;
+        width: 0
+    }
+
+    40%,50%,60%,70%,80% {
+        opacity: 0;
+        width: 25px;
+        visibility: hidden
+    }
+
+    to {
+        width: 25px;
+        visibility: visible;
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes FixedActionButton_browseJobFabMoveUp__3uEiA {
+    0% {
+        -webkit-transform: translateY(400%);
+        transform: translateY(400%)
+    }
+
+    to {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+@-moz-keyframes FixedActionButton_browseJobFabMoveUp__3uEiA {
+    0% {
+        -moz-transform: translateY(400%);
+        transform: translateY(400%)
+    }
+
+    to {
+        -moz-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+@keyframes FixedActionButton_browseJobFabMoveUp__3uEiA {
+    0% {
+        -webkit-transform: translateY(400%);
+        -moz-transform: translateY(400%);
+        transform: translateY(400%)
+    }
+
+    to {
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+@-webkit-keyframes FixedActionButton_browseJobFabMoveDown__uzuFG {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    to {
+        -webkit-transform: translateY(400%);
+        transform: translateY(400%)
+    }
+}
+
+@-moz-keyframes FixedActionButton_browseJobFabMoveDown__uzuFG {
+    0% {
+        -moz-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    to {
+        -moz-transform: translateY(400%);
+        transform: translateY(400%)
+    }
+}
+
+@keyframes FixedActionButton_browseJobFabMoveDown__uzuFG {
+    0% {
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    to {
+        -webkit-transform: translateY(400%);
+        -moz-transform: translateY(400%);
+        transform: translateY(400%)
+    }
+}
+
+
+
+@media only screen and (min-width: 200px) and (max-width: 480px){
+.rg_fab_container__22WmJ {
+    display: flex;
+}}
+
+

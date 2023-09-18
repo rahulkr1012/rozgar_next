@@ -1,0 +1,365 @@
+@media (max-width:1680px){
+	.rg-formsearch{width: 60%;}
+	.rg-myjobsapplications > ul > li{padding:0 20px;}
+	.rg-jobmatadata li{padding:0 15px;}
+	.rg-formeducation .form-group,
+	.rg-formjobexperience .form-group,
+	.rg-formhonorawards .form-group,
+	.rg-formsummary .form-group{width: 25%;}
+	.rg-reportissue .rg-formsummary .form-group{width: 100%;}
+}
+.rg-formsummary .form-group .rg-select select{padding:10px 30px 10px 44px;}
+@media (max-width:1600px){
+	.rg-myjobsapplications > ul > li .rg-featurejob{width: 50%;}
+	.rg-updatall .rg-btn{padding:0 20px;}
+}
+@media (max-width:1440px){
+	.rg-inputtyfile label{padding:15px 10px;}
+	.rg-postajobform fieldset .rg-halfformgroup{width: 100%;}
+	.rg-formjobexperience .form-group , .rg-formsummary .form-group{width: 33.33%;}
+}
+@media (max-width:1366px){
+	.rg-fixednav.rg-dashboardheader{padding-left:50px; }
+	.rg-favoritejobs .rg-featurejob .rg-companycontent{
+		float: left;
+		width: 100%;
+	}
+	.rg-jobalerts .rg-jobalert{padding:20px 10px;}
+	.rg-packageinfo li{padding:18px 20px;}
+	.rg-filterbalenav li a{padding:0 10px;}
+	.rg-filterbalenav li a i{margin:0 5px 0 0;}
+	.rg-wrapper {padding-left:50px;}
+	.rg-dashboardboxtitle{padding:30px 20px;}
+	.rg-wrapper .rg-sidebarwrapper{width: 50px;}
+	.rg-wrapper.rg-openmenu .rg-sidebarwrapper{width: 270px;}
+	.rg-openmenu .rg-sidebarwrapper .rg-logo{margin: 0;}
+	.rg-wrapper .rg-logoarea .rg-logoicon{
+		left: 50%;
+		opacity: 1;
+		visibility: visible;
+	}
+	.rg-wrapper.rg-openmenu .rg-logoarea .rg-logoicon{
+		left:-50%;
+		opacity: 0;
+		visibility: hidden;
+	}
+	.rg-username{display: none;}
+	.rg-userlogedin .rg-userimg{margin: 0;}
+	.rg-userlogedin{padding:0;}
+	.rg-formsearch{width: 70%;}
+	.rg-formsummary .form-group{width: 33.33%;}
+}
+@media (max-width:1280px){
+	.rg-reportreplyinfo .rg-rightarea{
+		float: left;
+		width: 100%;
+		margin-top:10px; 
+	}
+	.rg-formjobexperience .form-group,
+	.rg-formhonorawards .form-group,
+	.rg-formeducation .form-group{width: 33.33%;}
+	.rg-advancedlink{display: block;}
+}
+@media (max-width:1200px){}
+@media (max-width:1199px){
+	.rg-uploadimagesvtwo .rg-modaldialog {max-width: none;}
+	.rg-basicformholder{margin-bottom: 20px;}
+	.rg-jobscompanieshold{padding:5px 0;}
+	.rg-jobscompanieshold .rg-dashboardbox{margin: 10px 0;}
+	.rg-dashboardboxtitle h2{line-height: 20px;}
+	.rg-alertsexamples .rg-alert{margin:10px 0;}
+	.rg-favoritejobs .rg-featurejob .rg-companycontent{
+		float: none;
+		width: auto;
+	}
+	.rg-jobholder .rg-dashboardbox{margin:10px 0;}
+	.rg-dashboardheader > .rg-formsearch{display: none;}
+	.rg-filtertype{display: block;}
+	.rg-formsearch{
+		width: 100%;
+		max-width: none;
+	}
+}
+@media (max-width:1080px){
+	.rg-gallarydescription .rg-tabimgpopup li{width: 20%;}
+	.rg-formsummary .form-group{width: 50%;}
+	.rg-formjobexperience .form-group{width: 33.33%;}
+	.rg-package{width: 50%;}
+	.rg-standardpackage,
+	.rg-extendedpackage{border-top: 1px solid #eff2f5;}
+}
+@media (max-width:1024px){
+	.rg-myjobsapplications > ul > li .rg-featurejob {width: 80%;}
+	.rg-btnjobalertsvtwo{
+		float: left;
+		border: 0;
+		margin: 0;
+	}
+}
+@media (max-width:991px){
+	.rg-addyourproject .rg-addproject{margin:10px 0;}
+	.rg-statistics{margin:20px 0 0;}
+	.rg-updatall{padding:10px 10px 10px 15px; }
+	.rg-updatall span{width: 100%;}
+	.rg-skillshold{padding: 5px 0;}
+	.rg-skillshold .rg-dashboardbox{margin:10px 0; }
+}
+@media (max-width:800px){
+	.tg-dragdropwithform .tg-dragdropoption{
+		width: 100%;
+		margin: 0;
+		border: 0;
+		border-bottom: 1px solid #ddd;
+	}
+	.tg-dragdropwithform .tg-dragdropeditform{padding: 0 90px;width: 100%;}
+	.tg-dragdropwithform .tg-dragdropeditform .form-group{width: 100%;}
+	.tg-dragdropwithform .tg-dragdropeditform .rg-btnarea{
+		float: left;
+		width: 100%;
+		margin: 10px 0 0;
+		text-align: center;
+	}
+	.tg-dragdropwithform .tg-dragdropeditform .rg-btnsearch{
+		float: none;
+		display: inline-block;
+	}
+	.rg-gallarydescription .rg-tabimgpopup li{width: 25%;}
+	.rg-invoivepagination{border-top:1px solid #ddd;}
+	.rg-formhonorawards .form-group,
+	.rg-formeducation .form-group,
+	.rg-formjobexperience .form-group{width: 50%;}
+	.rg-filtertype .rg-formsearch{
+		z-index: 9;
+		display: none;
+		border-bottom: 1px solid #ddd;
+	}
+	.rg-filtertype .rg-formsearch fieldset .form-group:first-child{width: 100%;}
+	.rg-filtertype .rg-formsearch fieldset .form-group:nth-child(2),
+	.rg-filtertype .rg-formsearch fieldset .form-group:nth-child(3){width: 50%;}
+	.rg-filtertype .rg-formsearch fieldset .form-group{padding:5px;}
+	.rg-filtertype .rg-formsearch fieldset .rg-inputwithicon i{top: 5px;}
+	.rg-filtertype .rg-formsearch fieldset{
+		width: auto;
+		float: none;
+		margin: -5px;
+	}
+	.rg-postajobform fieldset .rg-halfformgroup{width: 100%;}
+	.rg-formjobpost fieldset .form-group{width: 50%;}
+	.rg-invoicestable tbody tr{
+		width: 100%;
+		margin: 18px 0;
+		display: block;
+		float: left;
+	}		
+}
+@media (max-width:768px){
+	.rg-uploadimagesvtwo{margin-bottom: 20px;}
+	.rg-jobmatadata{
+		width: 100%;
+		padding:20px; 
+		border-top:1px solid #eff2f5;
+	}
+	.rg-jobmatadata li + li{border-left:1px solid #eff2f5;}
+	.rg-jobmatadata li{width: 50%;}
+	.rg-jobmatadata:before{display: none;}
+	.rg-postingtipsinclude li span{
+		display: inline-block;
+		line-height: 18px;
+		width: 80%;
+	}
+	.rg-deactiveac .rg-halfformgroup{width: 100%;}
+}
+@media (max-width:767px){
+	.rg-companycontent{
+		float: none;
+		width: auto;
+	}
+	.rg-companyimg{
+		width: 81px;
+		margin:0 10px 0 0; 
+	}
+	.rg-filtertype .rg-formsearch fieldset{padding: 0 90px 0 10px;}
+	.rg-advancedlink{left: 0;}
+	.rg-wrapper.rg-openmenu .rg-btnmenutoggle i:before{content:'\e875';}
+	.rg-btnmenutoggle i:before{content:'\e876';}
+	.rg-btnmenutoggle{
+		top: 190px;
+		width: 40px;
+		height: 70px;
+		color: #fff;
+		right: -40px;
+		line-height: 72px;
+		background: #2f4768;
+		border-radius: 0 50px 50px 0;
+	}
+	.rg-btnmenutoggle:hover,
+	.rg-btnmenutoggle:focus{color:#fff;}
+	.rg-package{width: 100%;}
+	.rg-packages .rg-package + .rg-package{border-top: 2px solid #ddd;}
+	.rg-gallarydescription .rg-tabimgpopup li{width: 33.33%;}
+}
+@media (max-width:640px){
+	.rg-dashboardboxtitlevtwo .rg-settingsinfo{
+		width: 100%;
+		float: left;
+		margin: 10px 0 0 ;
+	}
+	.rg-accountinfo li{width: 100%;}
+	.rg-paneldetails .rg-btnjobalerts{
+		float: left;
+		width: 100%;
+		padding-bottom:0; 
+	}
+	.rg-formbasicinfo .form-group{width: 100%;}
+	.rg-formbasicinfo .rg-longitude{margin-bottom:10px;}
+	.rg-cvmanagers .rg-cvimage{margin:0 0 10px;}
+	.rg-cvmanagers .rg-cvname .rg-btnmakedefault{position: static;}
+	.rg-cvmanagers .rg-dashbboardcontent .rg-cvname{width: 100%;padding:0; }
+	.rg-cvmanagers .rg-mycvs .rg-btnjobalerts{
+		float: left;
+		clear: both;
+		padding:20px 0 0; 
+	}
+	.rg-chartmonth{
+		float: left;
+		margin-top: 20px;
+	}
+	.rg-invoivepagination .rg-pagination{
+		margin-top:10px;
+		float: left;
+		width: 100%;
+	}
+	.rg-invoivepagination .rg-pagination ul{float: left;}
+}
+@media (max-width:576px){.rg-uploadimages .rg-modaldialog{max-width: none;width: auto;}}
+@media (max-width:568px){
+	.rg-reportlog .rg-reportlogdate {
+		width: 100%;
+		border-bottom: 1px solid #ddd;
+	}
+	.rg-reportlog .rg-reportloginfo{
+		width: 100%;
+		border-left: 0;
+	}
+	.rg-panel .rg-paneldetails figure{margin-bottom:10px; }
+	.rg-formsummary .form-group,
+	.rg-formhonorawards .form-group,
+	.rg-formeducation .form-group,
+	.rg-formjobexperience .form-group{width: 100%;}
+	.rg-myfollowingcompanies .rg-filterbalenav li{width: 100%;}
+	.rg-jobmatadata{padding:10px 20px;}
+	.rg-jobmatadata li{
+		width: 100%;
+		padding:10px 0;
+	}
+	.rg-jobmatadata li + li{
+		padding-left:0;
+		border-left: 0;
+		border-top: 1px solid #eff2f5;
+	}
+	.rg-tabimgpopup li {
+	    width: 100%;
+	}
+	.rg-tabimgpopup li figure{
+		width: 150px;
+		margin: 0 auto;
+		float: none;
+	}
+	.rg-gallarydescription .rg-tabimgpopup li figure{width: 100%;}
+	.rg-formjobpost fieldset .form-group{width: 100%;}
+	.rg-myjobsapplications > ul > li .rg-featurejob {width: 100%;}
+	.rg-reportbar a{float: right !important;}
+	.rg-btnjobalertsvthree {padding: 15px 0;}
+	.rg-dashboardboxtitlevtwo .rg-questsearch{
+		float: left;
+		width: 100%;
+		margin: 15px 0 -15px 0;
+	}
+	.rg-companysummary .rg-profsummary .form-group{width: 100%;}
+	.rg-companysummary .rg-locationtitle .rg-btnjobalerts{float: left;}
+	.rg-btnjobalertsvtwo{padding: 24px 0px 24px 30px;}
+	.rg-gallarydescription .rg-tabimgpopup li{width: 50%;}
+	
+}
+@media (max-width:480px){
+	.rg-footer .rg-addnav{margin-bottom:20px;}
+	.tg-dragdropwithform .tg-dragdropeditform{padding: 0 30px;}
+	.rg-interviewprocess .rg-title h2 {line-height: 18px;}
+	.rg-dropdownmenu{width:200px;}
+	.rg-cvname h3{line-height: 18px;}
+	.rg-statisticscontent h3,
+	.rg-dashboardboxtitle h2{font-size:18px;}
+	.rg-updatall .rg-btnarea,
+	.rg-updatall .rg-btnarea .rg-btn{width: 100%;}
+	.rg-updatall .rg-btnarea .rg-btn + .rg-btn{margin:10px 0 0;}
+	.rg-myjobalerts .rg-dashboardboxtitle .rg-btnview{margin:10px 0 0;}
+	.rg-favoritejobs .rg-featurejob .rg-companycontent{
+		float: left;
+		width: 100%;
+	}
+	.rg-btnview{
+		float: left;
+		clear: both;
+		position: static;
+		margin-top: 10px;
+	}
+	.rg-statisticscontent{
+		float: left;
+		width: 100%;
+		padding:15px 0 0 10px;
+	}
+	.rg-filterbalenav li{width: 100%;}
+	.rg-companycontent {
+		width: 100%;
+		float: left;
+	}
+	.rg-main{padding:25px 10px;}
+	.rg-footer{padding:18px 10px;}
+	.rg-filtertype .rg-formsearch fieldset{padding:10px 0;}
+	.rg-filtertype .rg-formsearch fieldset .form-group{width: 100% !important;}
+	.rg-formbtnarea{position: static;}
+	.rg-formbtnarea .rg-closebar{
+		float: right;
+		width: auto;
+	}
+}
+@media (max-width:420px){
+	.rg-myjobsapplications > ul > li .rg-featurejob{padding-bottom:0; }
+	.rg-myjobsapplications .rg-btnjobalertsvthree{padding:0 0 20px;margin: 0; }
+	.rg-accordion .rg-paneldetails .rg-expinfo h5{line-height: 18px;}
+	.rg-myjobalerts .rg-btnjobalerts,
+	.rg-jobskill .rg-btnjobalerts{
+		float: left;
+		width: 100%;
+		margin-top:10px; 
+	}
+	.rg-questsearch fieldset .rg-inputwithicon .form-control,
+	.rg-questsearch fieldset .form-group{width: 100%;}
+	.rg-questsearch fieldset a.rg-btnsearch{
+		width: 100%;
+		margin: 10px 0 0;
+	}
+	.rg-jobalerts .rg-jobalert .rg-btnjobalerts{
+		float: left;
+		width: 100%;
+	}
+}
+@media (max-width:360px){
+	.rg-invoicestable > tbody > tr > td{padding: 10px;}
+	.rg-langnotification li:first-child a{padding:22px 20px;}
+	.rg-smartscan figure{
+		width: 103px;
+		margin: 0 auto;
+		float: none;
+	}
+	.rg-smartscan{
+		text-align: center;
+		padding: 30px;
+	}
+	.rg-smartscancontent{
+		width: 100%;
+		margin: 15px 0 0;
+	}
+	.rg-reportlogdate {width: 15%;}
+}
+@media (max-width:320px){}

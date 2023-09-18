@@ -1,0 +1,18 @@
+# *
+User-agent: *
+Allow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ChatGPT
+Disallow: /
+
+User-agent: OpenAI
+Disallow: /
+
+# Host
+Host: https://rozgar.com
+
+# Sitemaps
+Sitemap: https://rozgar.com/sitemap.xml

@@ -1,0 +1,86 @@
+/*==========================================================================================
+								Primery Theme Colors										
+==========================================================================================*/
+/*=============================================
+			Theme Text Color
+=============================================*/
+a,
+p a,
+p a:hover,
+a:hover,
+a:focus,
+a:active,
+.rg-stars span:after,
+.rg-empoyerinfo h2,
+.rg-btnjobalerts li.rg-btnfollowon a,
+.rg-btnmakedefault span,
+.rg-profilecomplete li.rg-profilecompleted i,
+.rg-smartscancontent span em,
+.rg-checkbox input[type=checkbox] + label:after,
+.rg-blogdetail .rg-description ul li:before,
+.rg-blogdetail .rg-description .rg-blockquotevtwo,
+.rg-jobdescription span:before,
+.rg-tagvtwo a:before,
+.rg-innerbannercontent h2,
+.rg-description blockquote q span
+
+{ color: #e81c28; }
+/*=============================================
+			Theme Background Color
+=============================================*/
+.rg-btn:hover,
+.rg-dropdowarrow,
+.navbar-toggle,
+.rg-searchoptions .form-group .rg-radio.rg-findjobs label,
+.rg-searchholder .chosen-container .chosen-results li.result-selected,
+.rg-searchholder .chosen-container .chosen-results li.highlighted,
+.rg-dashboardnav > ul > li > a:hover:after,
+.rg-dashboardnav > ul > li.menu-item-has-children > a:after,
+.rg-dashboardnav > ul > li.page_item_has_children > a:after,
+.rg-btnsearch,
+.rg-chartmonth li:hover a,
+.rg-chartmonth li.rg-active a,
+.rg-formsuccessstory .rg-textarea .form-group.rg-btns .rg-btn,
+.rg-btnaddproject,
+.rg-btnaddproject:focus,
+.rg-searchoptions .form-group:after,
+.rg-slidercontentholdervtwo .rg-searchoptions .form-group .rg-radio label:hover,
+.rg-slidercontentholdervtwo .rg-searchoptions .form-group .rg-radio input[type=radio]:checked + label,
+.rg-btn.rg-active,
+.rg-views ul li.rg-active a,
+.rg-views ul li:hover a,
+.rg-package:after,
+.rg-blogdetail .rg-description blockquote span i,
+.rg-pagesdetails li:after,
+.rg-themenavtabs li a:after,
+.rg-candidatessearch:hover .rg-employerdetails .rg-btn,
+.rg-usernav ul li a:before,
+.tg-qrcodedetails,
+.rg-dashboardnav > ul > li.rg-active > a:after,
+.rg-invoicestable tbody tr td:first-child:after,
+.loader:before,
+.rg-rightarea .rg-nav .navbar-toggler
+{ background:#e81c28; }
+.mCSB_scrollTools .mCSB_dragger,
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{ background:#e81c28 !important;}
+/*=============================================
+			Theme Border Color
+=============================================*/
+input:focus,
+.rg-btn:hover,
+.select select:focus,
+.form-control:focus,
+.rg-formsuccessstory .rg-textarea .form-group.rg-btns .rg-btn,
+.rg-jobapplynowbtn .rg-btn,
+.rg-candidatessearch:hover .rg-employerdetails .rg-btn
+{ border-color: #e81c28; }
+.rg-searchoptions.js-employer .form-group:after{background: #324b6e;}
+.rg-searchoptions.js-candidate .form-group:after{background: #fc413c;}
+.loader {
+    background: #e81c28;
+    background: -moz-linear-gradient(left, #e81c28 10%, rgba(0, 204, 103, 0) 42%);
+    background: -webkit-linear-gradient(left, #e81c28 10%, rgba(0, 204, 103, 0) 42%);
+    background: -o-linear-gradient(left, #e81c28 10%, rgba(0, 204, 103, 0) 42%);
+    background: -ms-linear-gradient(left, #e81c28 10%, rgba(0, 204, 103, 0) 42%);
+    background: linear-gradient(to right, #e81c28 10%, rgba(255, 204, 103, 0) 42%);
+}

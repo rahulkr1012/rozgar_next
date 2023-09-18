@@ -1,0 +1,165 @@
+.flex{display: flex;}
+.shimmer {
+  position: relative; 
+  background: #f6f7f8;
+  background-image: linear-gradient(to right, #f6f7f8 0%, #f2f4f7 10%, #f0f0f2 20%, #f2f4f7 30%, #f6f7f8 40%, #f6f7f8 100%);
+  background-repeat: no-repeat;
+  background-size: 100px 1200px; 
+  
+/* / Animation / */
+  -webkit-animation-duration: 1s;
+  
+  /* / Specifies style for element when animation isn't playing / */
+  -webkit-animation-fill-mode: forwards;
+  
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: shimmer;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0; 
+  }
+}
+#divRecJobs{
+  width: 500px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#divGovtList {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#div {
+  width: 500px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#divshimmer {
+  width: 500px;
+  height: 200px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #faf1f1;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px
+}
+
+.lineshimmer {
+  width: 100%;
+  height: 10px;
+  margin-top: 5px;
+}
+.lineshimmer1 {
+  width: 30%;
+  height: 24px;
+  margin-top: 5px;
+  margin-left: 101px;
+  border-radius:10%;
+}
+.lineshimmer2 {
+  width: 100%;
+  height: 20px;
+  margin-top: 10px;
+}
+
+#titleshimmer {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+#square {
+  width: 70px;
+  height:70px;
+}
+#squareshimmer {
+  width: 130px;
+  height: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#content {
+  flex: 1;
+  height: 90px;
+  width: 100%;
+  padding: 10px 15px 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#title {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+#desc {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+.line{  
+  width: 100%;
+  height: 10px;
+}
+
+.card.card-width{
+  width: 100% !important;
+  text-align: left !important;
+}
+
+
+#divshimmer3 {
+  width: 500px;
+  height: 315px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #faf1f1;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+#squareshimmer3 {
+  width: 90%;
+  height: 93%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#titleshimmer3 {
+  width: 100%;
+  height: 21px;
+  margin-bottom: 10px;
+  margin-top: 5px;}
+
+  .latesjobshimmerhome{
+    width: 33%;
+    border: 0px solid rgba(255, 255, 255, 1);
+    padding: 16px;
+    background: #f9f9f9;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    float: left;
+  }

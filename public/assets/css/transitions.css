@@ -1,0 +1,55 @@
+*:after,
+*:before,
+p a,
+a,
+.rg-socialicons li a,
+.rg-roundicontext,
+.rg-roundicontext .rg-usericonholder,
+.sub-menu,
+.mega-menu,
+.rg-languagedropdown li,
+.rg-searchoptions .form-group .rg-radio input[type=radio] + label,
+.rg-dashboardnav > ul > li > a,
+.rg-sidebarwrapper,
+.rg-wrapper,
+.rg-logo,
+.rg-wrapper.rg-openmenu .rg-logo img,
+.rg-logoicon,
+.rg-usernav,
+.rg-panel .rg-paneldetails,
+.rg-bannersuccessstory .rg-next,
+.rg-bannersuccessstory .rg-prev,
+.rg-newsarticle,
+.rg-posttag,
+.rg-widgetsearch .rg-btn,
+.rg-tag a,
+.rg-views ul li,
+.rg-navigation ul li,
+.rg-dropdownmenu li,
+.rg-dashboardnav ul li.menu-itrg-has-children .sub-menu li,
+.rg-dashboardnav ul li.menu-itrg-has-children .children li,
+.rg-dashboardnav ul li.page_item_has_children .sub-menu li,
+.rg-dashboardnav ul li.page_item_has_children .children li,
+.rg-invoicestable > tbody > tr,
+.rg-fixednav.rg-dashboardheader,
+.rg-dropdownmenu,
+.rg-languagedropdown
+
+{
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+
+
+.rg-sidenav, .rg-pagination ul li, .rg-iconhover,
+.rg-btnopenclose
+{
+	-webkit-transition: all 600ms ease-in-out;
+	-moz-transition: all 600ms ease-in-out;
+	-ms-transition: all 600ms ease-in-out;
+	-o-transition: all 600ms ease-in-out;
+	transition: all 600ms ease-in-out;
+}

@@ -1,0 +1,95 @@
+.coverbox {
+  padding: 16px;
+  margin: 0 auto;
+  background: #fff;
+  max-width: 100%;
+  position: relative;
+  box-shadow: 0px 0px 12px #d6d6d6;
+  border-radius: 6px;
+}
+ 
+.choose_config_edit{
+   cursor: pointer;
+}
+
+
+.choose_config_delete{
+  cursor: pointer;
+}
+
+.choose_config_edit:hover{
+   color: green;  
+}
+ 
+
+
+.choose_config_delete:hover{
+  color: red;  
+}
+
+
+
+.cover-letter-head {
+  display: flex;
+  justify-content: space-between;
+  background: #f9f9f9;
+  padding: 15px;
+  margin: -16px -16px 10px -16px;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.cv_letter_dash {
+  background: #f9f9f9;
+  padding: 13px 15px;
+  font-size: 18px;
+  font-family: 'Satoshi-Variable'; 
+  font-weight: 500; 
+} 
+ 
+ .ped-btn {
+  position: relative;
+  text-align: right;
+}
+.coverright {
+  margin: 0px;
+  padding: 0px;
+  text-align: right;
+}
+.coverright li {
+  display: inline-block;
+  margin-left: 10px;
+}
+.coverright li a {
+  color: #008ab2;
+  border-radius: 50px;
+  border: 1px solid #008ab2;
+  display: inline-block;
+  padding: 4px 16px;
+  font-weight: 600;
+}
+.covercreatetimebox {
+  position: relative;
+  text-align: right;
+}
+.covercreatetimebox .createdtext {
+  color: #444;
+  font-size: 14px;
+}
+.covercreatetimebox .createdtime {
+  color: #eb0000;
+  font-size: 14px;
+}
+
+.read-more-target,
+.read-more-trigger_opened {
+  display: none;
+}
+.read-more-state:checked ~ .read-more-wrap .read-more-target,
+.read-more-state:checked ~ .read-more-trigger_opened {
+  display: block;
+}
+.read-more-state:checked ~ .read-more-trigger_closed {
+  display: none;
+}
+
+.coverbox span{color: #e81b27;font-weight: 500;}

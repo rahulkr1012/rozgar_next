@@ -60,6 +60,8 @@ class SearchBar extends Component {
         })
 
         onChange(this, this.state.KEYWORD.name, val)
+        let url = constant.component.searchjob.url + `?keyword=${val}`;
+        window.location.href = url;
     }
 
 
@@ -116,9 +118,27 @@ class SearchBar extends Component {
             if (SALARY.value.length) {
                 url = url + `&sal=` + MINSALARY + '-' + MAXSALARY
             }
-         this.props.router.push(url)
+            this.props.router.push(url)
         }
     }
+
+    handleKeyDown = (e) => {
+        const { KEYWORD } = this.state;
+        if (e.key === 'Enter') {
+            e.preventDefault();
+
+            let url = ''
+            if (KEYWORD.value.length) {
+                url = constant.component.searchjob.url + `?keyword=${KEYWORD.value}`
+            }
+
+            this.props.router.push(url)
+            
+        }
+    }
+
+
+
     render() {
 
         const { KEYWORD } = this.state;
@@ -142,6 +162,7 @@ class SearchBar extends Component {
                                     selected={KEYWORD.value}
                                     options={KEYWORD.options}
                                     placeholder="Enter Skill, Company, Designation"
+                                    onKeyDown={this.handleKeyDown}
                                     onInputChange={(e) => { this.onKeywordPress(e, 'KEYWORD') }}
                                     onChange={(e) => { this.onKeywordChange(e) }}
                                     emptyLabel

@@ -189,7 +189,13 @@ export default class SavedJobs extends Component {
                                                                                 </div>
                                                                                 <ul className="rg-professionalinfo">
                                                                                     <li><i className="lnr lnr-briefcase"></i><span>{item.WORK_EXP_MIN}-{item.WORK_EXP_MAX} Yrs</span></li>
-                                                                                    <li><i className="fa fa-rupee"></i><span> {item.CTC_MIN === "" && item.CTC_MAX === "" ? "Not Disclosed" : `${item.CTC_MIN} - ${item.CTC_MAX}`}</span></li>
+                                                                                    <li><i className="fa fa-rupee"></i><span> {item.CTC_MIN === "" && item.CTC_MAX === "" ? "Not Disclosed" : `${item.CTC_MIN >= 100000
+                                                                                        ? (item.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                                                                        : item.CTC_MIN
+                                                                                        } - ${item.CTC_MAX >= 100000
+                                                                                            ? (item.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                                                                            : item.CTC_MAX
+                                                                                        } PA`}</span></li>
                                                                                     <li><i className="lnr lnr-map-marker"></i><span>{item.IS_WORK_FROM_HOME === "N" ? item.location : "Remote"}</span></li>
                                                                                 </ul>
                                                                             </div>}

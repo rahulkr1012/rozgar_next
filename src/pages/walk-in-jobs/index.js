@@ -6,6 +6,7 @@ import { getLoggedInUserData } from 'nextCookie';
 import React, { Component } from 'react'
 import FilteredHeader from 'components/Filtered_Header'
 import dynamic from "next/dynamic";
+import { jobFaq } from '@/actions/jobsByAction';
 const Loader = dynamic(() => import('components/Loader'), { ssr: false });
 const Joblists = dynamic(() => import("components/Joblists/Joblists"), {
     loading: () => <Loader />,
@@ -24,7 +25,8 @@ export default class index extends Component {
             CITIES: [],
             TOP_COMPANY_IMAGES: [],
             locatlities: [],
-            ud: this.props.ud
+            ud: this.props.ud,
+            Job_FAQ_List:''
         }
 
     }
@@ -46,6 +48,12 @@ export default class index extends Component {
         //     
         //     alert(err)
         // })
+        jobFaq({KEYWORD:'walk-in'}).then((res) => {
+            this.setState({
+                Job_FAQ_List: res.result.list});
+        }).catch((err) => {
+            console.log(err)
+        })
 
         topCompanyImages().then(res => {
             if (res.status) {
@@ -78,7 +86,7 @@ export default class index extends Component {
         this.joblist(1, data)
     }
     render() {
-        const { JOB_LIST, JOB_COUNT, CURRENT_PAGE, aboutJobName, isLocation, CITIES, TOP_COMPANY_IMAGES, locatlities, latestfresherjobs } = this.state
+        const { JOB_LIST, JOB_COUNT, CURRENT_PAGE, aboutJobName, isLocation, CITIES, TOP_COMPANY_IMAGES, locatlities, latestfresherjobs ,Job_FAQ_List} = this.state
         return (
             <React.Fragment>
                 <Head>
@@ -115,6 +123,7 @@ export default class index extends Component {
                     hideExperience={true}
                     JOB_LIST={JOB_LIST}
                     JOB_COUNT={JOB_COUNT}
+                    Job_FAQ_List={Job_FAQ_List}
                     joblist={(page, data) => { this.joblist(page, data) }}
                     CURRENT_PAGE={CURRENT_PAGE}
                     aboutJobName={aboutJobName}

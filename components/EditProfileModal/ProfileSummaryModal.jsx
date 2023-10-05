@@ -32,7 +32,7 @@ export default class EditProfileSummaryModal extends Component {
                     <div className='form-group'>
                         <textarea 
                             value={this.state.profileSummary}
-                            placeholder='Write here...'
+                            placeholder='   Write here...'
                             onChange={(e)=>{
                                 this.setState({
                                     profileSummary:e.target.value
@@ -53,6 +53,8 @@ export default class EditProfileSummaryModal extends Component {
                 </div>
             </div>
         </form>
+
+         
     </React.Fragment>
     )
   }

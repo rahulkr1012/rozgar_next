@@ -214,14 +214,15 @@ class jobdetails extends Component {
   getStatus = (CANDIDATE_ID) => {
     if (this.props.props) {
       let key = this.props.props.asPath;
-      let jobDetail = key ? key.split("?")[1]?.split("-")[2] : null;
+      let jobDetail = key ? key.match(/-(\d+)$/)[1] : null;
       const body = {
         JOB_ID: jobDetail ? parseInt(jobDetail) : null,
         CANDIDATE_ID: CANDIDATE_ID,
       };
+      
       JobApppliedStatus(body)
         .then((res) => {
-          debugger
+          
           if (res.status) {
             this.setState({ isJobApplied: res.result.status });
           }
@@ -340,7 +341,7 @@ class jobdetails extends Component {
       TOP_COMPANY_IMAGES,
     } = this.props;
 
-    const { mobile , email, alertName } = this.state;
+    const { mobile, email, alertName } = this.state;
 
     let savedJobList =
       this.props &&
@@ -558,7 +559,7 @@ class jobdetails extends Component {
                                 </span>
                                 <a href="#">
                                   <span className="reviewlink">
-                                  ({detail.REVIEW_COUNT ? detail.REVIEW_COUNT : 0} Reviews)
+                                    ({detail.REVIEW_COUNT ? detail.REVIEW_COUNT : 0} Reviews)
                                   </span>
                                 </a>
                               </div>
@@ -576,7 +577,13 @@ class jobdetails extends Component {
                                   <div className="job_exp">
                                     <i className="fa fa-rupee"></i>
                                     <span>
-                                      {detail?.IS_HIDE_SALARY_FROM_CANDIDATE === 'Y' ? 'Not disclosed' : detail?.CTC_MIN + '-' + detail?.CTC_MAX}
+                                      {detail?.IS_HIDE_SALARY_FROM_CANDIDATE === 'Y' ? 'Not disclosed' : `${detail.CTC_MIN >= 100000
+                                        ? (detail.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                        : detail.CTC_MIN
+                                        } - ${detail.CTC_MAX >= 100000
+                                          ? (detail.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                          : detail.CTC_MAX
+                                        } PA`}
                                     </span>
                                   </div>
                                 </li>
@@ -608,8 +615,8 @@ class jobdetails extends Component {
                             </div>
                           </div>
                           <div className="rg-jobapplybtnlike">
-                            
-                           {this.state.isJobApplied ? (
+
+                            {this.state.isJobApplied ? (
                               <div className="rg-likebtnbox">
                                 <button
                                   className="rg-applied-btn rg-active"
@@ -991,7 +998,7 @@ class jobdetails extends Component {
                           {similarJobList.map((item, index) => {
                             const URL = item.COMPANY_URL ? item.COMPANY_URL + '-' + item.EMPLOYER_ID : 'rozgar' + '-' + item.EMPLOYER_ID;
 
-                            let dynamicURL =ToSeoUrl(item.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(item.JOB_TITLE) + '-' + item.JOB_ID
+                            let dynamicURL = ToSeoUrl(item.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(item.JOB_TITLE) + '-' + item.JOB_ID
                             dynamicURL = dynamicURL.replace(/ /g, "");
                             return (
                               <div className="rg-featurejobholder">

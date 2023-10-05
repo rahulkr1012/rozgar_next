@@ -782,7 +782,7 @@ export default class educationLoan extends Component {
                 </div>
                 <div className='col-md-6'>
 
-                  <div className='faq' id='accordion'>
+                  <div className='faq faq-card-box' id='accordion'>
                     <div className='card'>
                       <div className='card-header' id='faqHeading-1'>
                         <div className='mb-0'>

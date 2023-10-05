@@ -16,7 +16,7 @@ export async function getServerSideProps({ res }) {
   const formattedDate = `${year}-${month}-${day}`;
 
 
-  const baseUrl = process.env.BASE_URL || 'https://rozgar.com/jobs/'; // Replace with your website URL
+  const baseUrl = process.env.BASE_URL || 'https://rozgar.com/job/'; // Replace with your website URL
   let job_list = await remotejobs({ limit: 5572, page: 1, filter: {} })
   const sitemapItems = job_list.result.list.map((item) => {
     let dynamicURL = ToSeoUrl(item.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(item.JOB_TITLE) + '-' + item.JOB_ID

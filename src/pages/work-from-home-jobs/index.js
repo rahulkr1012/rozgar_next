@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import FilteredHeader from 'components/Filtered_Header'
 import dynamic from "next/dynamic";
 import { getProduct } from '@/action/CandidateAction';
+import { jobFaq } from '@/actions/jobsByAction';
 const Loader = dynamic(() => import("components/Loader"), {
     ssr: false,
 });
@@ -27,7 +28,8 @@ export default class index extends Component {
             CITIES: [],
             TOP_COMPANY_IMAGES: [],
             locatlities: [],
-            ud: this.props.ud
+            ud: this.props.ud,
+            Job_FAQ_List:''
         }
 
     }
@@ -35,7 +37,12 @@ export default class index extends Component {
     componentDidMount() {
         this.setState({ aboutJobName: 'Work-From-Home jobs' })
         // this.setState({ JOB_LIST: this.props.JOB_LIST, JOB_COUNT: this.props.JOB_COUNT })
-
+        jobFaq({KEYWORD:'work-from-home'}).then((res) => {
+            this.setState({
+                Job_FAQ_List: res.result.list});
+        }).catch((err) => {
+            console.log(err)
+        })
         getProduct().then((ItemsResult) => {
             this.setState({
                 productList: ItemsResult.ItemsResult.Items
@@ -89,7 +96,7 @@ export default class index extends Component {
         this.joblist(1, data)
     }
     render() {
-        const { JOB_LIST, JOB_COUNT, CURRENT_PAGE, aboutJobName, isLocation, CITIES, TOP_COMPANY_IMAGES, locatlities, latestfresherjobs, productList } = this.state
+        const { JOB_LIST, JOB_COUNT, CURRENT_PAGE, aboutJobName, isLocation, CITIES, TOP_COMPANY_IMAGES, locatlities, latestfresherjobs, productList ,Job_FAQ_List} = this.state
 
         return (
             <React.Fragment>
@@ -130,6 +137,7 @@ export default class index extends Component {
                     JOB_COUNT={JOB_COUNT}
                     joblist={(page, data) => { this.joblist(page, data) }}
                     CURRENT_PAGE={CURRENT_PAGE}
+                    Job_FAQ_List={Job_FAQ_List}
                     aboutJobName={aboutJobName}
                     isLocation={isLocation}
                     productList={productList}

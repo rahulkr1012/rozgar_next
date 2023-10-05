@@ -58,7 +58,7 @@ const index = (props) => {
   const applyJobs = () => {
     const { CANDIDATE_ID } = detail1 ? detail1 : ''
     const { token } = detail1 ? detail1 : ''
-    const { JOB_ID } = detail
+    const { JOB_ID } = detail ? detail : ''
     const model = {
       CANDIDATE_ID: CANDIDATE_ID,
       JOB_ID: JOB_ID

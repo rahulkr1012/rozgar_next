@@ -3,7 +3,9 @@ import { getAllCoverLetterById, getJobDetailById } from '@/action/CandidateActio
 import React ,{useEffect, useState , useRef, useCallback} from 'react'
 import { getAuthHeader, getCandidateAuthHeader } from 'utils';
 import axios from 'axios';
-import { faPen ,faUnlock , faLock } from '@fortawesome/free-solid-svg-icons'
+
+import { faUnlock , faLock , faPenToSquare , faPen } from '@fortawesome/free-solid-svg-icons'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from '@/styles/CoverLetter.module.css'
 import moment from 'moment';
@@ -44,7 +46,8 @@ import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
       const [error, setError] = useState(null);
       const [saved_cvl_id, set_saved_cvl_id] = useState(null);
       const ref = useRef(null);
-
+       
+ 
       //  let save_cvl_id_callback = useCallback(()=>{
       //   const {JOB_ID} =props.cd_job_details  
       //   let model = { attemp_left , JOB_ID , COVER_LETTER:coverletter , ai_generated:"yes" , selected:"yes" , saved_cvl_id  }
@@ -58,17 +61,16 @@ import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
            
                 const {JOB_ID} = props.cd_job_details  
                 let {result , status }   = await getJobDetailById(JOB_ID) 
-
                     if(status){
                        setFormData({
                         ...formData , 
-                            name:result.CANDIDATE_NAME ,
+                          name:result.CANDIDATE_NAME ,
                           company:result.company ,
                           skills:result.skills ,
-                          position :result.position,
-                          experience:result.experience,
+                          position :result.position ,
+                          experience:result.experience==null?"fresher ":result.experience+"+"  ,
                           education:`${result.education!=null?result.education.EDUCATION_QUALIFICATION:""} in ${result.education!=null?result.education.SPECIALIZATION:""} ` , 
-                          prev_experience:2
+                          prev_experience:result.experience==null?null:result.experience+"+" 
                     })
                   
                     setAllCoverLetters(result.summ_details  )
@@ -97,8 +99,8 @@ const SaveCoverLetter = async ()=>{
           if( data.status ) {
              
               const { result , status } =  await getAllCoverLetterById()
-                if(status) { 
-                   
+                
+               if(status) { 
                       setAllCoverLetters(result.cover_list) 
                       setSaveLoading(false) 
                       setAllLoader({...allLoader ,edit_show_loader:false })
@@ -118,8 +120,7 @@ const SaveCoverLetter = async ()=>{
        
    }catch(err){
         console.log(err);
-        setSaveLoading(false)
-        
+        setSaveLoading(false)    
    }
 
    setSaveLoading(false)
@@ -140,10 +141,13 @@ const SaveCoverLetter = async ()=>{
                   setSelectedCover(filteredArr)
                   setFinalCoverLetter('')                    
                     }
-
+                
+                     debugger
+                 
                     const {data:gptCoverLetter } = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/cover-letter`,
                     formData, getCandidateAuthHeader() )
-                    if(gptCoverLetter.status) {
+                    
+                     if(gptCoverLetter.status) {
                         const {stream , attemps_left:als }   = gptCoverLetter.result
                          generate(stream , 1 )
                          setAttemptLeft(als)
@@ -153,9 +157,9 @@ const SaveCoverLetter = async ()=>{
                             let model = { attemp_left , JOB_ID , COVER_LETTER:stream , ai_generated:"yes" , selected:"yes" , saved_cvl_id:null  }
                             props.sendcvl_with_associatedJob(model)  
                           }
+                        }
                         
-
-                        }else{
+                        else{
                       setIsLoading(false);    
                     }  
                  }else{
@@ -173,8 +177,7 @@ const SaveCoverLetter = async ()=>{
   }
 
 
-
-  const generate = (str, size)=>{
+const generate = (str, size)=>{
 
     const numChunks = Math.ceil(str.length / size)
     const chunks = new Array(numChunks)
@@ -194,18 +197,20 @@ const SaveCoverLetter = async ()=>{
               const {JOB_ID} =props.cd_job_details  
               let model = { attemp_left , JOB_ID , COVER_LETTER:coverletter , ai_generated:"yes" , selected:"yes" , saved_cvl_id  }
               props.sendcvl_with_associatedJob(model)  
-          }
-          
+           }
+            
           setAllLoader({
             edit_show_loader:!allLoader.edit_show_loader
           })
+           
+          
      }           
   }
 
   const options = allCoverLetter.map(ele=> {return  { label:ele.cover_letter.slice(0,100)+"..." , value: ele.cover_letter }} ) 
 
   const handleChange =(object)=>{
-
+         
      if(Array.isArray( object) && object.length>0 ) {
        const { value , label } = object[0]
        
@@ -240,10 +245,16 @@ const SaveCoverLetter = async ()=>{
                }
    
 
+    let saveandeditstyle ={
+      float: 'right',
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      color:"green"
+     }
+
    return ( 
     <div className='cover-modal-box'>
-  
-
 
     <div className="row">
     <div class="col-12">
@@ -352,9 +363,9 @@ const SaveCoverLetter = async ()=>{
     :     
     <span 
     className="badge badge-success my-2 "
-    style={{     cursor: "pointer",  width: "138px", height: "23px",  fontSize: "12px",  }}
-    onClick={handleSubmit}  >
-    
+    style={{ cursor: "pointer",  width: "138px" , height: "23px" ,  fontSize: "12px",  }}
+    onClick={handleSubmit} >
+
     Generate Cover Letter 
     
     </span>  }
@@ -365,10 +376,11 @@ const SaveCoverLetter = async ()=>{
          | <span style={{fontWeight: "600"}}>Powered By</span> <span><Image src={Ailogo} style={{width: "20px"}} /></span>
           {attemp_left!=undefined && attemp_left<=0 && <span style={{ color:"red"}} > Limit exceed to generate cov letter per day  </span>  }
             
-           
-     {!allLoader.edit_show_loader? <FontAwesomeIcon  onClick={editShow}   icon={faUnlock} size='xl' className={`mx-2 ${styles.edit_show}`} /> :
-     <FontAwesomeIcon icon={faLock} size='xl'  onClick={editShow} className={`mx-2 ${styles.edit_show}`} /> }
-        
+
+              {!allLoader.edit_show_loader?<span style={saveandeditstyle}> <FontAwesomeIcon  onClick={editShow}   icon={faPenToSquare} size='xl' className={`mx-2 ${styles.edit_show}`} /> edit & save </span>   :
+             <span style={saveandeditstyle} ><FontAwesomeIcon icon={faPen} size='xl'  onClick={editShow} className={`mx-2 ${styles.edit_show}`} />edit & save  </span> }
+                
+    
             <textarea
             type="text"
             className="form-control cover-leatertext"
@@ -403,7 +415,6 @@ const SaveCoverLetter = async ()=>{
                 <span className="sr-only"> Loading... </span>
               </div>
             </div>
-             
             : <button
             type="button"
             className="rg-btn rg-active btn-primary my-2 save-later-btn"

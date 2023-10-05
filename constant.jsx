@@ -376,12 +376,10 @@ const currency = {
     indianRupee: '₹'
 }
 const build = {
-
     version: 'Rozgar-Version 3.1.1'
-
-
 }
-export const dev_canocical = {
+
+ export const dev_canocical = {
     d_canonical : 'https://qa.rozgar.com/'
     
 }

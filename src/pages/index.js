@@ -7,13 +7,10 @@ import logo from 'src/assets/images/logo.png'
 const Loader = dynamic(() => import('components/Loader'), { ssr: false });
 const HeaderLoader = dynamic(() => import('components/common/HeaderLoader'), { ssr: false });
 // import HeaderLoader from 'components/common/HeaderLoader'
-
 import { getLoggedInUserData } from 'nextCookie';
-
 const HomePage = dynamic(() => import('components/homepage/homepage'), { loading: () => <Loader />, ssr: true });
 // import FilteredHeader from 'components/Filtered_Header'
 const FilteredHeader = dynamic(() => import('components/Filtered_Header'), { loading: () => <HeaderLoader />, ssr: false });
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';

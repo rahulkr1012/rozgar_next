@@ -17,24 +17,24 @@ export const candidateRegister = (data) => {
 
 export const getJobDetailById = (job_id) => {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/get-job-detail-by-job-id?JOB_ID=${job_id}`;
-    return axios.get(url,  getCandidateAuthHeader()).then((res) => {
+    return axios.get(url, getCandidateAuthHeader()).then((res) => {
         if (res.status) {
             return res.data;
         }
     })
 };
- 
+
 
 
 export const getAllCoverLetterById = () => {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/get-all-cover-letter-by-id`;
-    return axios.get(url,  getCandidateAuthHeader()).then((res) => {
+    return axios.get(url, getCandidateAuthHeader()).then((res) => {
         if (res.status) {
             return res.data;
         }
     })
 };
- 
+
 
 
 
@@ -788,8 +788,8 @@ export const GetResume = (model) => {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/GetResume`;
     return axios.post(url, model, getCandidateAuthHeader()).then((res) => {
         return res.data;
-     })
- };
+    })
+};
 
 
 export const getCoverLetterDetail = (model) => {
@@ -798,8 +798,8 @@ export const getCoverLetterDetail = (model) => {
         return res.data;
     })
 };
- 
- 
+
+
 export const getAllRecommendedJobs = (page) => {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/all-recommended-jobs?limit=20&page=${page}`;
     return axios.get(url, getCandidateAuthHeader()).then((res) => {
@@ -1110,7 +1110,7 @@ export const courseDetails = (COLLEGE_ID) => {
 
 export const AddAuthorReview = (model) => {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/add-author-review?AUTHOR_ID=${model.AUTHOR_ID}`;
-    return axios.post(url,model, getCandidateAuthHeader()).then((res) => {
+    return axios.post(url, model, getCandidateAuthHeader()).then((res) => {
         if (res.status) {
             return res.data;
         }
@@ -1135,3 +1135,15 @@ export const updateAuthorReview = (data) => {
         }
     })
 }
+
+export const verifyCoupon = (data) => {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/rzg-verify-resume-coupon`;
+    return axios.post(url, data, getCandidateAuthHeader()).then((res) => {
+        if (res.status) {
+            return res.data;
+        }
+    })
+}
+
+
+

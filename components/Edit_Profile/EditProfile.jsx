@@ -585,7 +585,7 @@ export default class EditProfile extends Component {
                                         {section === 'Education' && <Education getCandidateEducationList={this.getCandidateEducationList} getCandidateDetail={this.getCandidateDetail} />}
                                         {section === 'ItSkills' && <ITSkills getCandidateITSkillsList={this.getCandidateITSkillsList} getCandidateDetail={this.getCandidateDetail} />}
                                         {section === 'Projects' && <Projects getCandidateProjectsLists={this.getCandidateProjectsLists} getCandidateDetail={this.getCandidateDetail} />}
-                                        {section === 'ProfileSummary' && <ProfileSummary getProfileSummary={this.getProfileSummary} getCandidateDetail={this.getCandidateDetail} />}
+                                        {section === 'ProfileSummary' && <ProfileSummary getProfileSummary={this.getProfileSummary}  getResume={this.state.resumeDetail}   getCandidateDetail={this.getCandidateDetail} />}
                                         {section === 'OnlineProfile' && <OnlineProfile getOnlineProfileLists={this.getOnlineProfileLists} />}
                                         {section === 'Accomplishments' && <Accomplishments getCertificateLists={this.getCertificateLists} getOnlineProfileLists={this.getOnlineProfileLists} getWorkSampleLists={this.getWorkSampleLists} getCandidateDetail={this.getCandidateDetail} />}
                                         {section === 'CareerProfile' && <CareerProfile getCareerProfile={this.getCareerProfile} getCandidateDetail={this.getCandidateDetail} />}

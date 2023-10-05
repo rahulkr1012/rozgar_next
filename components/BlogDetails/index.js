@@ -177,17 +177,21 @@ function index(props) {
                                                                         </Link></h2>
                                                                     )
                                                                 }
-                                                                if (item.tagName === 'h3') {
-                                                                    return (
-
-                                                                        <h3><Link href={item.id ? '#' + item.id : 'javascript:void:0'}>
-                                                                            {item.text}
-                                                                        </Link></h3>
-                                                                    )
-                                                                }
 
 
-                                                            })}
+
+
+                                                            })
+
+                                                            }
+                                                            {blog.CONCLUSION && blog.CONCLUSION.length > 0 && <h2><Link href={'#conclusion'}>
+                                                                Conclusion
+                                                            </Link></h2>}
+
+                                                            {blog.FAQ && JSON.parse(blog.FAQ).length > 0 && <h2><Link href={'#faq'}>
+                                                                Frequently Asked Questions
+                                                            </Link></h2>}
+
                                                         </div>
                                                     </div>}
                                                     {jobListOne.length > 0 && <div className="table-responsive" >
@@ -196,12 +200,12 @@ function index(props) {
                                                             className="table align-middle table-nowrap table-hover job-information-table">
                                                             <thead className="table-light">
                                                                 <tr >
-                                                                    <th colSpan='3' scope="col" style={{ fontSize: "18px" }}>Latest  Jobs</th>
+                                                                    <th colSpan='3' scope="col" style={{ fontSize: "18px" }}>Trending Jobs</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th className='text-left'>Job Information</th>
-                                                                    <th>Company Name</th>
-                                                                    <th>Apply Job</th>
+                                                                    {/* <th>Company Name</th> */}
+                                                                    <th style={{ width: "150px" }}>Apply Job</th>
 
                                                                 </tr>
                                                             </thead>
@@ -221,10 +225,10 @@ function index(props) {
                                                                                     <small style={{ color: "#676767", marginLeft: '5px', fontWeight: '600' }}>
                                                                                         ({item.WORK_EXP_MIN}-{item.WORK_EXP_MAX} years)</small></h4>
 
-                                                                                    {/* <p>{item.COMPANY_NAME}</p> */}
+                                                                                    <p>{item.COMPANY_NAME}</p>
 
                                                                                 </td>
-                                                                                <td style={{ color: "rgb(103, 103, 103)" }}>{item.COMPANY_NAME}</td>
+                                                                                {/* <td style={{ color: "rgb(103, 103, 103)" }}>{item.COMPANY_NAME}</td> */}
                                                                                 <td>  <div className="rg-likebtnbox"><button className="rg-btn rg-active" style={{ padding: '0px 10px' }}>
                                                                                     <a style={{ color: '#ffff' }} target='_blank' href={constant.component.jobdetails.url.replace(':url', dynamicURLOne)}>Apply Now</a>
                                                                                 </button></div></td>
@@ -247,12 +251,12 @@ function index(props) {
                                                             className="table align-middle table-nowrap table-hover job-information-table">
                                                             <thead className="table-light">
                                                                 <tr >
-                                                                    <th colSpan='3' scope="col" style={{ fontSize: "18px" }}>Latest  Jobs</th>
+                                                                    <th colSpan='3' scope="col" style={{ fontSize: "18px" }}>Latest Category Jobs</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th className='text-left'>Job Information</th>
-                                                                    <th>Company Name</th>
-                                                                    <th>Apply Job</th>
+                                                                    {/* <th>Company Name</th> */}
+                                                                    <th style={{ width: "150px" }}>Apply Job</th>
 
                                                                 </tr>
                                                             </thead>
@@ -272,10 +276,10 @@ function index(props) {
                                                                                     <small style={{ color: "#676767", marginLeft: '5px', fontWeight: '600' }}>
                                                                                         ({item.WORK_EXP_MIN}-{item.WORK_EXP_MAX} years)</small></h4>
 
-                                                                                    {/* <p>{item.COMPANY_NAME}</p> */}
+                                                                                    <p>{item.COMPANY_NAME}</p>
 
                                                                                 </td>
-                                                                                <td style={{ color: "rgb(103, 103, 103)" }}>{item.COMPANY_NAME}</td>
+                                                                                {/* <td style={{ color: "rgb(103, 103, 103)" }}>{item.COMPANY_NAME}</td> */}
                                                                                 <td>  <div className="rg-likebtnbox"><button className="rg-btn rg-active" style={{ padding: '0px 10px' }}>
                                                                                     <a style={{ color: '#ffff' }} target='_blank' href={constant.component.jobdetails.url.replace(':url', dynamicURLOne)}>Apply Now</a>
                                                                                 </button></div></td>
@@ -290,13 +294,13 @@ function index(props) {
 
 
                                                     <div>
-                                                        {blog.CONCLUSION && blog.CONCLUSION.length > 0 ? Parser(`<h3>Conclusion</h3><p>${blog.CONCLUSION}</p>`)
+                                                        {blog.CONCLUSION && blog.CONCLUSION.length > 0 ? Parser(`<h2 id='conclusion'>Conclusion</h2><p>${blog.CONCLUSION}</p>`)
                                                             : ''}
 
                                                     </div>
 
                                                     {blog.FAQ && JSON.parse(blog.FAQ).length > 0 && <div>
-                                                        <h3>Frequently Asked Questions</h3>
+                                                        <h2 id='faq'>Frequently Asked Questions</h2>
                                                         <div className="rozgar-quciksolutionbox">
 
                                                             {(JSON.parse(blog.FAQ)).map((item, index) => {
@@ -444,6 +448,76 @@ function index(props) {
 
                                 }
 
+
+
+
+                                <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3 float-left">
+                                    <aside id="rg-sidebar" className="rg-sidebar">
+
+                                        <div className="rg-widget rg-categories">
+                                            <div className="rg-widgettitle">
+                                                <h3>Categories</h3>
+
+                                            </div>
+
+                                            <div>
+                                                <ul className='blogcategoryscroll'>
+                                                    {
+                                                        blogCategory.length > 0 ? blogCategory.map((ele, index) => {
+                                                            return (
+
+                                                                <li style={{ listStyleType: "none" }}>
+                                                                    <a target='_blank' href={constant.component.blogCategory.url.replace(':url', ele.URL)} style={{ color: "#000", fontWeight: "500", marginBottom: "10px" }}>{ele.CATEGORY}</a>
+                                                                </li>
+
+
+                                                            )
+                                                        }) : <h1> <Shimmer /> </h1>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+                                        <div className="rg-widget rg-widgetsearch">
+                                            <div className="rg-widgettitle">
+                                                <h3>Get career tips to your inbox</h3>
+                                            </div>
+                                            <div className="rg-widgetcontent">
+                                                <form className="rg-formtheme">
+                                                    <fieldset>
+                                                        <div className="form-group rg-inputwithicon">
+                                                            <input
+                                                                //name={state.keyword.name}
+                                                                // onChange={(e) => setState({ ...state, keyword: { ...state.keyword, value: e.target.value } })}
+                                                                className="form-control"
+                                                                style={{ paddingLeft: '10px' }}
+                                                                // value={state.keyword.value}
+                                                                placeholder="Enter your email address" />
+                                                        </div>
+                                                        <button className={styleBdetail.blogsubbtn}  >Subscribe</button>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        {/* <div className="rg-adds rg-jobsearchadd mb-20 mt-20">
+                                            <a href="javascript:void(0);" title="">
+                                                <figure>
+                                                    <Image src={adds05} width={1000} height={200} alt="img description" />
+                                                </figure>
+                                            </a>
+                                            <span>Ad</span>
+                                        </div> */}
+                                    </aside>
+                                </div>
+
+                            </div>
+                            <div className='row'>
                                 <section className="rg-haslayout rg-sectionspace">
                                     <div className="container">
                                         <div className="row">
@@ -503,72 +577,6 @@ function index(props) {
                                         </div>
                                     </div>
                                 </section>
-
-
-                                {/* <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3 float-left">
-                                    <aside id="rg-sidebar" className="rg-sidebar">
-
-                                        <div className="rg-widget rg-categories">
-                                            <div className="rg-widgettitle">
-                                                <h3>Categories</h3>
-
-                                            </div>
-
-                                            <div>
-                                                <ul className='blogcategoryscroll'>
-                                                    {
-                                                        blogCategory.length > 0 ? blogCategory.map((ele, index) => {
-                                                            return (
-
-                                                                <li style={{ listStyleType: "none" }}>
-                                                                    <a target='_blank' href={constant.component.blogCategory.url.replace(':url', ele.URL)} style={{ color: "#000", fontWeight: "500", marginBottom: "10px" }}>{ele.CATEGORY}</a>
-                                                                </li>
-
-
-                                                            )
-                                                        }) : <h1> <Shimmer /> </h1>
-                                                    }
-                                                </ul>
-                                            </div>
-
-                                        </div>
-
-
-
-
-
-                                        <div className="rg-widget rg-widgetsearch">
-                                            <div className="rg-widgettitle">
-                                                <h3>Get career tips to your inbox</h3>
-                                            </div>
-                                            <div className="rg-widgetcontent">
-                                                <form className="rg-formtheme">
-                                                    <fieldset>
-                                                        <div className="form-group rg-inputwithicon">
-                                                            <input
-                                                                //name={state.keyword.name}
-                                                                // onChange={(e) => setState({ ...state, keyword: { ...state.keyword, value: e.target.value } })}
-                                                                className="form-control"
-                                                                style={{ paddingLeft: '10px' }}
-                                                                // value={state.keyword.value}
-                                                                placeholder="Enter your email address" />
-                                                        </div>
-                                                        <button className={styleBdetail.blogsubbtn}  >Subscribe</button>
-                                                    </fieldset>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div className="rg-adds rg-jobsearchadd mb-20 mt-20">
-                                            <a href="javascript:void(0);" title="">
-                                                <figure>
-                                                    <Image src={adds05} width={1000} height={200} alt="img description" />
-                                                </figure>
-                                            </a>
-                                            <span>Ad</span>
-                                        </div>
-                                    </aside>
-                                </div> */}
                             </div>
                         </div>
                     </div>

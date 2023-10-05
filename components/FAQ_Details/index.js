@@ -148,7 +148,7 @@ function index(props) {
                                                     :
                                                     <ul id="style-4">
                                                         <div className="rg-featurejob text-danger pt-20" style={{ textAlign: 'center' }}>
-                                                            <Image src={noSearchFound} alt=" no search found  " height={60} width={1000} style={{ maxHeight: "75px" }} />
+                                                            <Image src={noSearchFound} alt=" no search found  " height={60} width={1000} style={{ maxHeight: "150px", width:'auto' }} />
                                                             <h4>No Search Found.</h4>
                                                             <h6>Did you enter wrong spelling of any word?</h6>
                                                             <p>Only FAQs Question/Answer names are accepted in FAQs Search</p>

@@ -186,7 +186,8 @@ class ResumeChooseTemplate extends Component {
                                                </Link>
                                             <div className="preview-btn-wrapper text-center">
                                                 <Link href={constant.component.ResumeViewOne.url}
-                                                 className="preview-demo v2" style={{ padding: "8px 10px" }}>Use template <i className="fa fa-long-arrow-right"></i></Link>
+                                                 className="preview-demo v2" style={{ padding: "8px 10px" }}>Use template <i className="fa fa-long-arrow-right"></i>
+                                                 </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -272,6 +273,16 @@ export default  withRouter(ResumeChooseTemplate)
 export async function getServerSideProps(context) {
     let {req} = context
     let ud =  getLoggedInUserData(req)
+
+
+    if (ud == null) {
+        return {
+          redirect: {
+            destination: "/?alert=true",
+            permanent: false,
+          },
+        };
+      }
     
     return {
          props:{

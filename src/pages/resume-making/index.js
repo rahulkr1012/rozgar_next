@@ -3,11 +3,12 @@ import FilteredHeader from 'components/Filtered_Header'
 import { getLoggedInUserData } from 'nextCookie'
 import Head from 'next/head'
 import dynamic from "next/dynamic";
-import Loader from 'components/Loader'
-
+const Loader = dynamic(() => import("components/Loader"), {
+  ssr: false,
+});
 const ResumeMakings = dynamic(() => import("components/ResumeMaking/ResumeMaking"), {
   loading: () => <Loader />,
-  ssr: false,
+  ssr: true,
 });
 
 

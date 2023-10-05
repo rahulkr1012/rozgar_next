@@ -5,13 +5,18 @@ import Pagination from 'react-js-pagination'
 import moment from 'moment';
 import noSearchFound from 'src/assets/images/no-results.png'
 import authorimg from 'src/assets/images/picss.png'
+import blogpic from 'src/assets/images/blogpic.jpg'
 import author from 'src/assets/images/author.png'
+
+import adds05 from 'src/assets/images/adds-05.jpg'
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styleBdetail from "../../components/BlogDetails/styleBdetail.module.css";
 import styleBlog from '../../components/blog_detail/styleBlog.module.css';
 import { capFirstLetterInSentence } from 'utils';
 import Modal from "react-modal";
 import RatingReview from 'components/Rating-Review/index';
+import ModalWindow from 'components/common/ModalWindow/ModalWindow';
 import { getCookie } from 'cookies-next';
 import Swal from 'sweetalert2';
 import { getAuthorReview } from '@/action/CandidateAction';
@@ -23,6 +28,8 @@ export function BlogDetail(props) {
     })
 
     const [reviewData, setreviewData] = useState()
+
+
     useEffect(() => {
         getReviewDetails()
     }, [])
@@ -31,6 +38,7 @@ export function BlogDetail(props) {
     const getReviewDetails = () => {
         const { AUTHOR_ID } = authorDetail
         getAuthorReview(AUTHOR_ID).then((res) => {
+            console.log("dataaaa", res.result);
             if (res.status) {
                 setreviewData(res.result.list)
                 // this.setState({ showModalReview: true, employmentDetails: data, type: type })
@@ -43,6 +51,7 @@ export function BlogDetail(props) {
 
     const handlePageChange = (pageNumber) => {
         const { currentPage } = state
+        //  currentPage(pageNumber)
         setState({
             currentPage: pageNumber
         })
@@ -50,6 +59,8 @@ export function BlogDetail(props) {
         props.blogList(pageNumber)
     };
     const { showShimmer, blogList, count, authorDetail } = props
+    console.log(authorDetail, "authorDetail")
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const detail = getCookie(constant.keys.cd) ? JSON.parse(getCookie(constant.keys.cd)) : {}
 
@@ -72,6 +83,9 @@ export function BlogDetail(props) {
         setIsModalOpen(false);
     };
 
+
+    console.log("valueee", reviewData);
+    console.log("deteeee", detail);
     return (
 
         <React.Fragment>

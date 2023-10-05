@@ -807,7 +807,7 @@ export default class ResumeForm extends Component {
       if (this.state.file != undefined)
         formData.append("PROFILE_IMAGE", this.state.file);
       else formData.append("PROFILE_IMAGE", this.state.PROFILE_PICTURE);
-
+      
       formData.append("data", JSON.stringify(modal));
     this.props.onSubmit(formData);
     }
@@ -1491,7 +1491,8 @@ export default class ResumeForm extends Component {
                      {error && !BIO && (
                       <span className="text-danger ml-2">{error.BIO}</span>
                     )}
-                     
+                      { BIO.length>PARA_LIMIT.BIO_LENGTH && <span className="text-danger" style={{marginLeft:"8px"}}>Error: Bio Content Exceeds Limit.&nbsp;{PARA_LIMIT.BIO_LENGTH} Please shorten your input to 1500 characters.</span>}
+
                   </div>
                 </div>
               </div>
@@ -2182,7 +2183,7 @@ export default class ResumeForm extends Component {
             {EXPERIENCE.map((item, index) => (
               <>
                 <div className="all-exps">
-                  {EXPERIENCE.length > 1 && (
+                  {(EXPERIENCE.length > 1 || EXPERIENCE.length <= 1) && (
                     <i
                       class="ti-trash pull-right"
                       style={{
@@ -2332,6 +2333,9 @@ export default class ResumeForm extends Component {
                           {(PARA_LIMIT.DISC_LENGTH-item.EXPERIENCE_DESCRIPTION.length)<0?<span style={{color:"red"}}> {item.EXPERIENCE_DESCRIPTION.length} </span> :
                             <span style={{color:"green"}} > {item.EXPERIENCE_DESCRIPTION.length} 
                             </span> }/{PARA_LIMIT.DISC_LENGTH} 
+
+                            { item.EXPERIENCE_DESCRIPTION.length>PARA_LIMIT.DISC_LENGTH && <span className="text-danger" style={{marginLeft:"8px"}}>Error: Description Content Exceeds Limit.&nbsp;{PARA_LIMIT.DISC_LENGTH} Please shorten your input to 500 characters.</span>}
+
                       </div>
                   </div>
                 </div>
@@ -2392,7 +2396,7 @@ export default class ResumeForm extends Component {
             {PROJECT.map((item, index) => (
               <>
                 <div className="all-exps">
-                  {PROJECT.length === 0 && (
+                  {(PROJECT.length > 1 || PROJECT.length <= 1 ) && (
                     <i
                       class="ti-trash pull-right"
                       style={{
@@ -2496,6 +2500,9 @@ export default class ResumeForm extends Component {
                       
                       { (PARA_LIMIT.PROJ_DISC_LENGTH-item.PROJECT_DESCRIPTION.length )<0?<span style={{color:"red"}}> {item.PROJECT_DESCRIPTION.length} </span> : <span style={{color:"green"}} > {item.PROJECT_DESCRIPTION.length} </span> }/{PARA_LIMIT.PROJ_DISC_LENGTH} 
 
+
+                      { item.PROJECT_DESCRIPTION.length>PARA_LIMIT.PROJ_DISC_LENGTH && <span className="text-danger" style={{marginLeft:"8px"}}>Error: Project Description Content Exceeds Limit.&nbsp;{PARA_LIMIT.PROJ_DISC_LENGTH} Please shorten your input to 1000 characters.</span>}
+
                     </div>
                   </div>
                 </div>
@@ -2556,7 +2563,7 @@ export default class ResumeForm extends Component {
             {SKILL.map((item, index) => (
               <div className="block-container" key={index}>
                 <div className="all-skills">
-                  {SKILL.length > 1 && (
+                  {(SKILL.length > 1 || SKILL.length <= 1) && (
                     <i
                       class="ti-trash pull-right"
                       style={{
@@ -2653,7 +2660,7 @@ export default class ResumeForm extends Component {
             {LANGUAGE.map((item, index) => (
               <div className="block-container" key={index}>
                 <div className="all-skills">
-                  {LANGUAGE.length > 1 && (
+                  {(LANGUAGE.length > 1 || LANGUAGE.length <= 1) && (
                     <i
                       class="ti-trash pull-right"
                       style={{
@@ -2797,7 +2804,7 @@ export default class ResumeForm extends Component {
             {this.state.SOCIAL.map((item, index) => (
               <div className="block-container" key={index}>
                 <div className="all-socials">
-                  {SOCIAL.length > 1 && (
+                  {(SOCIAL.length > 1 || SOCIAL.length <= 1) && (
                     <i
                       class="ti-trash pull-right"
                       style={{
@@ -2895,7 +2902,7 @@ export default class ResumeForm extends Component {
             {INTRESTS.map((item, index) => (
               <div className="block-container" key={index}>
                 <div className="all-socials">
-                  {INTRESTS.length > 1 && (
+                  {(INTRESTS.length > 1 || INTRESTS.length <= 1) && (
                     <i
                       class="ti-trash pull-right"
                       style={{

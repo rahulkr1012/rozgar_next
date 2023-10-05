@@ -142,8 +142,8 @@ export default withRouter(class index extends Component {
                                         onClick={() => {
                                             window.location.href = "/"
                                         }}
-                                        width={200}
-                                        height={100}
+                                        width={165}
+                                        height={85}
                                         title={constant.build.version}
                                         style={{
                                             cursor: "pointer"

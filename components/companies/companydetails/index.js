@@ -106,7 +106,8 @@ export default class Companydetail extends Component {
 													}} className="rg-btn rg-active">{tk ? this.props.isFollowedByMe ? 'Followed' : 'Follow' : 'Follow'} </a>
 													</div> */}
 													<div className="rg-likebtnbox" style={{ cursor: 'pointer' }}>
-														{numberWithCommas(detail?.followers)} followers&nbsp;&nbsp;<a href="javascript:void(0);" onClick={() => {
+														{numberWithCommas(detail?.followers)} followers&nbsp;&nbsp;<a href="javascript:void(0);" 
+														onClick={() => {
 															this.onOpenModal()
 															this.onFollow()
 														}} className="rg-btn rg-active">{tk ? this.props.isFollowedByMe ? 'Followed' : 'Follow' : 'Follow'} </a>

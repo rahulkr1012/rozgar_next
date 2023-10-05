@@ -170,6 +170,12 @@ export const blogList = (data) => {
         return res.data;
     })
 };
+export const jobFaq = (model) => {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/jobs-faq`;
+    return axios.post(url,model).then((res) => {
+        return res.data;
+    })
+};
 
 export const Allbloglist = (data) => {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/rzg-all-blog-list`;

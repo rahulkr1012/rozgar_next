@@ -10,6 +10,14 @@ import Link from 'next/link';
 import { getCookie } from 'cookies-next';
 import Image from 'next/image';
 import ProfileSummaryLoader from 'components/common/EditProfileLoader/ProfileSummaryLoader'
+import dynamic from 'next/dynamic';
+ 
+const  GenerateProfileSummary  = dynamic(()=>import( 'components/GenerateSummary') , {ssr:false })
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+
 export default class ProfileSummary extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +26,8 @@ export default class ProfileSummary extends Component {
             detail: getCookie(constant.keys.cd) ? JSON.parse(getCookie(constant.keys.cd)) : {},
             profileSummary: '',
             error: {},
-            showLoader:false
+            showLoader:false ,
+            showSummModal:false 
         }
     }
 
@@ -28,6 +37,7 @@ export default class ProfileSummary extends Component {
 
     getProfileSummary = () => {
         this.setState({showLoader:true})
+         
         getProfileSummary().then((res) => {
             this.setState({showLoader:true})
             if (res.status) {
@@ -95,13 +105,22 @@ export default class ProfileSummary extends Component {
     onhideModal = () => {
         this.setState({ showModal: false,error:[] })
     }
+     
     render() {
-        const { showModal, profileSummary,showLoader } = this.state
+        const { showModal, profileSummary,showLoader , showSummModal  } = this.state
 
         return (
             <React.Fragment>
+             
                 <div className='edprofilerightside'>
-                    <div className='edprojobtext'>Profile Summary <small> &nbsp;  &nbsp;</small> <Link href={''} className='pofileupdatetext' onClick={() => { this.onShowModal() }}>{profileSummary && profileSummary.length > 0 ? 'EDIT PROFILE SUMMARY' : 'ADD PROFILE SUMMARY'}</Link></div>
+                  
+                    <div className='edprojobtext'>Profile Summary <small> &nbsp;  &nbsp;</small> <Link href={''} className='pofileupdatetext' onClick={() => { this.onShowModal() }}>{profileSummary && profileSummary.length > 0 ? 'EDIT PROFILE SUMMARY' : 'ADD PROFILE SUMMARY'}</Link>
+                    
+
+            <Link href={''} className='pofileupdatetext mx-2' onClick={
+                () =>  this.setState({...this.state , showSummModal : !showSummModal  }) }> GENERATE PROFILE SUMMARY </Link>
+
+                    </div>
                     <div className='edprofilerightsideinner bb-01'>
                         <div className='pro-job-details'>
                             <div className='grid03'>
@@ -109,16 +128,21 @@ export default class ProfileSummary extends Component {
                                 profileSummary.length > 0 ?
                                     <p>
                                         {nl2br(profileSummary)}
+
+
                                     </p> : <div>
                                         <Image src={noSearchFound} style={{ display: "block", margin: "0 auto" }} />
                                         <h6 className='text-center text-danger'>No profile Summary Added</h6>
                                         <p style={{ textAlign: "center" }}> <Link href={''} style={{ color: "#222222", textDecoration: "none", background: "#ffdede", display: "inline-block", borderRadius: "4px", fontSize: "13px", marginTop: "10px", padding: "6px 20px", marginLeft: "12px" }} onClick={(e) => { this.onShowModal(null, e, 'ADD') }} > Please Add Profile Summary  <i style={{ marginLeft: '4px' }} className="fa fa-plus"></i></Link></p>
                                     </div>}
+                                     
                                 {/* <p>Your Profile Summary should mention the highlights of your career and education, what your professional interests are, and what kind of a career you are looking for. Write a meaningful summary of more than 50 characters.</p> */}
-                            </div>
+                            
+                                 </div>
                         </div>
                     </div>
                 </div>
+
                 {showModal && <ModalWindow
                 className = "upd-title-mod"
                     title={profileSummary && profileSummary.length > 0 ? "Updtae Profile Summary" : "Add Profile Summary"}
@@ -131,6 +155,49 @@ export default class ProfileSummary extends Component {
                         profileSummary={this.state.profileSummary}
                     />
                 </ModalWindow>}
+
+
+                 
+                
+
+                {showSummModal &&  <ModalWindow
+                    className = "upd-title-mod"
+                        title={"Generate and update Profile Summary " }
+                        backdrop="static"
+                        toggleModal={this.onhideModal}
+                        >
+                          
+                         <GenerateProfileSummary 
+                         updateProfileSummary={()=>this.getProfileSummary() }
+                         getResume = {this.props.getResume}
+                         error={this.state.error}
+                         onSubmit={this.AddUpdateProfileSummary}
+                         onCancel={()=>  this.setState({ ...this.state , showSummModal:false  }) }
+                         profileSummary={this.state.profileSummary}
+                         profileDetail= {this.state.detail}
+                         />
+    
+
+                    </ModalWindow>
+      } 
+
+
+      <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
+{/* Same as */}
+<ToastContainer />
+
+
             </React.Fragment>
         )
     }

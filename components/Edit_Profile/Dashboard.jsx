@@ -26,8 +26,8 @@ export default class Dashboard extends Component {
             openModal: false,
             saveList: [],
             detail: getCookie(constant.keys.cd)
-            ? JSON.parse(getCookie(constant.keys.cd))
-            : null,
+                ? JSON.parse(getCookie(constant.keys.cd))
+                : null,
             candidateDetail: {},
             getFile: undefined,
             list: [],
@@ -92,7 +92,7 @@ export default class Dashboard extends Component {
         getCandidateDetail({ CANDIDATE_ID: '' }).then((res) => {
             if (res.status) {
                 // if (res.result.ProfileWeigh < 60) {
-                    // this.props.history.push(constant.component.editProfile.url);
+                // this.props.history.push(constant.component.editProfile.url);
                 //     this.props.onProgress()
                 // }
                 this.setState({
@@ -104,9 +104,9 @@ export default class Dashboard extends Component {
         })
     }
 
-    candidateId= getCookie(constant.keys.cd)
-    ? JSON.parse(getCookie(constant.keys.cd)).CANDIDATE_ID
-    : {}
+    candidateId = getCookie(constant.keys.cd)
+        ? JSON.parse(getCookie(constant.keys.cd)).CANDIDATE_ID
+        : {}
 
 
     setLiked = (JOB_ID) => {
@@ -177,8 +177,8 @@ export default class Dashboard extends Component {
                                         <div className='profilepic'>
                                             {/* <Image src={'./assets/images/author/profile_icon.jpg'} alt="image description" /> */}
                                             {getFile != undefined && getFile.PROFILE_IMAGE ?
-                                                <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}/candidate/pic/${CANDIDATE_ID}/${getFile.PROFILE_IMAGE}`} width={100} height={70} alt=''/> :
-                                                <Image src={Pic} width={100} height={70}/>
+                                                <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}/candidate/pic/${CANDIDATE_ID}/${getFile.PROFILE_IMAGE}`} width={100} height={70} alt='' /> :
+                                                <Image src={Pic} width={100} height={70} />
                                             }
                                             <div className='proimgedit' onClick={this.onOpenModal}>
                                                 <i class="fa fa-camera"></i>
@@ -207,7 +207,7 @@ export default class Dashboard extends Component {
                                                             </li>
                                                             <li>
                                                                 <span className='allicon'><i class="lnr lnr-envelope"></i></span>
-                                                                <span>{ candidateDetail.EMAIL_ID == null || undefined ?  "Not Available":candidateDetail.EMAIL_ID}</span>
+                                                                <span>{candidateDetail.EMAIL_ID == null || undefined ? "Not Available" : candidateDetail.EMAIL_ID}</span>
                                                             </li>
                                                             <li>
                                                                 <span className='allicon'><i class="lnr lnr-layers"></i></span>
@@ -324,7 +324,7 @@ export default class Dashboard extends Component {
                                                                         </div>
                                                                         <div className='newrjobs'>
                                                                             <div className='procomlogo' style={{ height: "35px", width: "35px", backgroundColor: "rgb(61 63 67 / 6%)", display: "flex", justifyContent: "center", alignItems: "center", padding: "0", marginRight: "10px", borderRadius: "4px" }}>
-                                                                                {item.COMPANY_LOGO === 'NA' ? <h6 style={{ marginBottom: "0" }}>{item.COMPANY_NAME?.split(' ').length === 1 ? item.COMPANY_NAME?.slice(0, 1) : item.COMPANY_NAME?.split(' ').map((i) => i.substring(0, 1)).join('').slice(0, 3)}</h6> : <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}/company/logo/${item.COMPANY_LOGO}`} alt={item.COMPANY_NAME} width={100} height={100}/>}
+                                                                                {item.COMPANY_LOGO === 'NA' ? <h6 style={{ marginBottom: "0" }}>{item.COMPANY_NAME?.split(' ').length === 1 ? item.COMPANY_NAME?.slice(0, 1) : item.COMPANY_NAME?.split(' ').map((i) => i.substring(0, 1)).join('').slice(0, 3)}</h6> : <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}/company/logo/${item.COMPANY_LOGO}`} alt={item.COMPANY_NAME} width={100} height={100} />}
 
                                                                             </div>
                                                                             <div className='procomtext'>
@@ -351,7 +351,13 @@ export default class Dashboard extends Component {
                                                                                 </div>
                                                                                 <div className='grid03'>
                                                                                     <span><i class="fa fa-rupee pr-1"></i>
-                                                                                        {item.CTC_MIN === "" && item.CTC_MAX === "" ? "Not Disclosed" : `${item.CTC_MIN} - ${item.CTC_MAX}`}
+                                                                                        {item.CTC_MIN === "" && item.CTC_MAX === "" ? "Not Disclosed" : `${item?.CTC_MIN >= 100000
+                                                                                            ? (item?.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                                                                            : item?.CTC_MIN
+                                                                                            } - ${item?.CTC_MAX >= 100000
+                                                                                                ? (item?.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                                                                                : item?.CTC_MAX
+                                                                                            } PA`}
                                                                                     </span>
                                                                                 </div>
                                                                             </a>
@@ -394,7 +400,7 @@ export default class Dashboard extends Component {
                                                             <div className='col-md-6'>
                                                                 <div className="rg-featurejob job-slice mb-15">
                                                                     <figure className="rg-companyimg">
-                                                                        {item.COMPANY_LOGO === 'NA' ? <h3>{item.COMPANY_NAME.split(' ').map((i) => i.substring(0, 1)).join('')}</h3> : <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}/company/logo/${item.COMPANY_LOGO}`} alt={item.COMPANY_NAME} width={100} height={100}/>}
+                                                                        {item.COMPANY_LOGO === 'NA' ? <h3>{item.COMPANY_NAME.split(' ').map((i) => i.substring(0, 1)).join('')}</h3> : <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}/company/logo/${item.COMPANY_LOGO}`} alt={item.COMPANY_NAME} width={100} height={100} />}
                                                                     </figure>
                                                                     <div className="rg-companycontent">
                                                                         <div className="rg-companyname">

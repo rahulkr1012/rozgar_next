@@ -267,9 +267,10 @@ saveFile = (model,filename) => {
                       className="rg-btn btn-primary ml-2 header-close-btn"
                       style={{ border: "none", outline: "none" }}
                       onClick={this.props.close}
-                    >
+                >
                     <span aria-hidden="true">&times;</span>
-                    </button>
+               </button>
+                     
           <ModalBody>
             <>
               <form>
@@ -366,6 +367,7 @@ saveFile = (model,filename) => {
                               className="d-flex profile-pic-img-bx"
                               style={{ marginLeft: "2.5rem" }}
                             >
+                             
                               {/* <button
                                 type="button"
                                 className="btncv mr-4"
@@ -375,6 +377,7 @@ saveFile = (model,filename) => {
                               >
                                 BROWSE RESUME
                               </button> */}
+                               
                                <input
                                 type="file"
                                 ref={(ref) => (this.upload = ref)}
@@ -384,6 +387,7 @@ saveFile = (model,filename) => {
                                
                                 onChange={this.onChangeFile}
                               />
+                               
                               <button
                                 className="btncv"
                                 type="button"
@@ -398,6 +402,8 @@ saveFile = (model,filename) => {
                     </div>
                   </div>
                 </div>
+                 
+
                 <div className="row">
                   <div class="col-12 text-right pb-3 pt-3">
                    
@@ -416,7 +422,7 @@ saveFile = (model,filename) => {
                       style={{ border: "none", outline: "none" }}
                       onClick={this.props.close}
                     >
-                      CANCEL
+                       CANCEL
                     </button>
                   </div>
                 </div>

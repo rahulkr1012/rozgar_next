@@ -984,7 +984,7 @@ export default class MobileSearch extends Component {
                     href={constant.component.resumeMaking.url}
                     className="createCV-btn"
                   >
-                    <i className="ti-pencil-alt"></i> Create a free CV
+                    <i className="ti-pencil-alt"></i> Create CV
                   </Link>
                   <Link
                     target="_blank"

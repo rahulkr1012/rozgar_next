@@ -297,7 +297,13 @@ export default class index extends Component {
                                                                                 </div>
                                                                                 <ul className="rg-professionalinfo">
                                                                                     <li><i className="lnr lnr-briefcase"></i><span className='pr-10'> {data.WORK_EXP_MAX <= 1 ? `${data.WORK_EXP_MIN} - ${data.WORK_EXP_MAX} Year` : `${data.WORK_EXP_MIN} - ${data.WORK_EXP_MAX} Years`}</span></li>
-                                                                                    <li><i className="fa fa-rupee"></i><span> {data.CTC_MIN === "" && data.CTC_MAX === "" ? "Not Disclosed" : `${data.CTC_MIN} - ${data.CTC_MAX}`}</span></li>
+                                                                                    <li><i className="fa fa-rupee"></i><span> {data.CTC_MIN === "" && data.CTC_MAX === "" ? "Not Disclosed" : `${data.CTC_MIN >= 100000
+                                                                                        ? (data.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                                                                        : data.CTC_MIN
+                                                                                        } - ${data.CTC_MAX >= 100000
+                                                                                            ? (data.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                                                                            : data.CTC_MAX
+                                                                                        } PA`}</span></li>
                                                                                     <li><i className="lnr lnr-map-marker"></i><span>{data.IS_WORK_FROM_HOME === "N" ? data.STATE : "Remote"}</span></li>
                                                                                 </ul>
                                                                             </div>

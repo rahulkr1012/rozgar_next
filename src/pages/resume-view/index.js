@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import ResumeViewOne from 'components/ResumeViewOne'
 // import '../../../../src/assets/css/rmaking/pillar-1.css'
 import constant from 'constant'
@@ -17,17 +16,13 @@ import { getCourseSpeczListForJobs } from '@/action/CandidateAction';
 
 class resumeViewOne extends Component {
 
-  constructor(props) {
-    
+constructor(props) {
     super(props);
-
     this.state = {
       ud: this.props.ud,
       candidateList:
         this.props.router.query.mobile ? { ...JSON.parse(this.props.router.query.data), PROFILE_IMAGE: "Snapchat-2021291259.jpg" } :
-
-          this.props.resume_data ? { ...this.props.resume_data.result, PROFILE_IMAGE: this.props.resume_data.PROFILE_IMAGE } : undefined,
-
+          this.props.resume_data ? { ...this.props.resume_data.result , PROFILE_IMAGE: this.props.resume_data.PROFILE_IMAGE } : undefined,
       cd_list: undefined,
       detail: this.props.ud != null ? JSON.parse(this.props.ud[constant.keys.cd]) : '',
       mobileView: false
@@ -35,13 +30,16 @@ class resumeViewOne extends Component {
 
   }
 
+   
 
   componentDidMount() {
-
-    this.getDetailsByResume()
+     
+    this.getDetailsByResume() 
+     
     if (window.location.href.includes('mobile=true') || browserName.includes('Chrome WebView')) {
-      this.setState({ mobileView: true })
-    }
+       this.setState({ mobileView: true })
+     }
+     
   }
 
 
@@ -189,8 +187,6 @@ class resumeViewOne extends Component {
 
 
 
-
-
 let mapStateToProps = (state) => {
   const { resumeData } = state
 
@@ -216,7 +212,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(withRouter(resumeVie
 export async function getServerSideProps(context) {
   let { req } = context
   let ud = getLoggedInUserData(req)
-
 
   return {
     props: {

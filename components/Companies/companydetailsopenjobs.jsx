@@ -72,7 +72,13 @@ export default class companydetailsopenjobs extends Component {
                                                         </div>
                                                         <ul class="jobcompanyhiringdetails" style={{ fontSize: "12px" }}>
                                                             <li><i class="lnr lnr-briefcase"></i> {item.WORK_EXP_MIN}-{item.WORK_EXP_MAX} Yrs</li>
-                                                            <li><i class="fa fa-rupee"></i> {item?.IS_HIDE_SALARY_FROM_CANDIDATE === 'Y' ? 'Not disclosed' : item?.CTC_MIN + '-' + item?.CTC_MAX}</li>
+                                                            <li><i class="fa fa-rupee"></i> {item?.IS_HIDE_SALARY_FROM_CANDIDATE === 'Y' ? 'Not disclosed' : `${item?.CTC_MIN >= 100000
+                                                                ? (item?.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                                                : item?.CTC_MIN
+                                                                } - ${item?.CTC_MAX >= 100000
+                                                                    ? (item?.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                                                    : item?.CTC_MAX
+                                                                } PA`}</li>
                                                             <li><i class="lnr lnr-map-marker"></i> {item.CITY?.length > 18 ? Parser(item.CITY.slice(0, 18)) + '...' : Parser(item.CITY)}</li>
                                                         </ul>
                                                         <div class="roz-companyjobtans">

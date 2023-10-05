@@ -8055,7 +8055,7 @@ td {
     word-break: break-word;
     width: 100%;
     padding: 2px;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     font-weight: 400;
     line-height: 16px;
     display: inline-block;
@@ -8473,7 +8473,7 @@ td {
     color: #767676;
     font-size: 16px
 }
-
+.rg-blogdetail{background: #fff;padding: 15px}
 .rg-blogdetail,
 .rg-blogdetailsshort {
     float: left;
@@ -8786,9 +8786,10 @@ td {
 }
 
 .rg-blogdetail .rg-description p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
-    margin: 0 0 30px
+    margin: 0 0 30px;
+    color: #000;
 }
 
 .rg-blogdetailshort .rg-blogdetail .rg-description p {
@@ -32886,6 +32887,22 @@ body.light-version {
     object-fit: cover;
 }
 
+.watermarks{position: relative;}
+.watermarks::after{content: "ROZGAR.COM"; position: absolute; top:40%; left:26%; z-index: 9;
+    font-size: 117px;
+    transform: rotateZ(-35deg);
+    color: #a39c9c;
+    opacity: 0.1;
+
+}
+
+/* .watermarks .waterimg{
+    position: absolute;
+    top: -15%;
+    z-index: 9;
+    left: 29%;}
+
+.watermarks .waterimg img{max-width:100%;} */
 
 /* .rating-review{
     padding-top: 16px;
@@ -32895,7 +32912,9 @@ body.light-version {
 } */
 
 
-.job-information-table tr td p{margin-bottom: 0px !important;}
+.job-information-table tr td p{margin-bottom: 0px !important;    font-size: 14px !important;
+    color: #666 !important;
+}
 .job-information-table tr td h4{margin-bottom: 0px !important;font-weight: 700;}
 .job-information-table tr td{border-right: none;}
 .job-information-table thead tr th{background-color: #eeeeee;font-size: 15px;border: 1px solid #d7d7d7;}
@@ -32903,3 +32922,8 @@ body.light-version {
 
 
 
+.faq.faq-card-box .card{    
+    box-shadow: none;
+    padding: 0px 0px;
+    width: 100%;
+    margin: 0px auto;}

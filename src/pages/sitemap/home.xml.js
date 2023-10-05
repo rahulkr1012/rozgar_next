@@ -31,7 +31,7 @@ export async function getServerSideProps({ res }) {
   const formattedDate = `${year}-${month}-${day}`;
 
   const baseUrl = 'https://rozgar.com/'; // Replace with your website URL
-  const baseUrl2 = 'https://rozgar.com/jobs/'
+  const baseUrl2 = 'https://rozgar.com/job/'
   const companybaseurl = 'https://rozgar.com/company/'
 
   const CityListItem = premiumCityListResList.map((item) => {

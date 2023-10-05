@@ -4,7 +4,9 @@ import constant from 'constant'
 import announceImage01 from '../../src/assets/images/announce-img01.png'
 import cvpic01 from '../../src/assets/images/cv-pic01.png'
 import Image from 'next/image'
+import { Accordion } from 'react-bootstrap'
 import swal from 'sweetalert'
+import nl2br from 'react-nl2br';
 import { onChange } from '../../utils'
 import Link from 'next/link'
 import { AddBannerAnalytics, createJobAlert, selectCountry } from '@/action/jobsByActions'
@@ -38,6 +40,7 @@ import noRecordImg from '../../public/assets/images/no-results.png'
 import { deleteCookie, getCookie, setCookie } from 'cookies-next'
 import { capFirstLetterInSentence, convertToPlain, getDateParts, ToSeoUrl } from '@/utils'
 import dynamic from 'next/dynamic'
+import NumberFormat from 'react-number-format'
 import Pagination from 'react-js-pagination'
 
 class JobLists extends Component {
@@ -69,6 +72,7 @@ class JobLists extends Component {
             alertName: { name: 'alertName', value: '', error: '', isRequired: false },
             mobile: { name: 'mobile', value: '', error: '', isRequired: false },
             email: { name: 'email', value: '', error: '', isRequired: false },
+            showModal: false,
             location: '',
             count: 0
 
@@ -167,28 +171,38 @@ class JobLists extends Component {
             NAME: alertName.value,
             MOBILE: mobile.value,
             KEYWORDS: this.props.aboutJobName,
+            TYPES: "AlertByJoblist"
         }
 
         if (this.validateEnquiryForm()) {
-            createJobAlert
-                (model).then((res) => {
-                    if (res.status) {
-                        swal({
-                            icon: "success",
-                            text: "Job Alert Created Successfully",
-                            timer: 2000,
-                            showCancelButton: false,
-                            showConfirmButton: false,
-                        });
-                    }
-                    else {
-                        alert(res.error)
-                    }
+            createJobAlert(model).then((res) => {
+                if (res.status) {
+                    this.closeModal();
+                    swal({
+                        icon: "success",
+                        text: "Job Alert Created Successfully",
+                        timer: 2000,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                    });
+                }
+                else {
+                    alert(res.error)
+                }
 
-                }).catch(err => {
-                    alert(err)
-                })
+            }).catch(err => {
+                alert(err)
+            })
         }
+    }
+
+    closeModal = () => {
+        this.setState({ showModal: false });
+        window.location.reload()
+    }
+
+    openModal = () => {
+        this.setState({ showModal: true });
     }
 
     handleChange(e) {
@@ -301,7 +315,10 @@ class JobLists extends Component {
     }
 
     render() {
-        const { JOB_LIST, JOB_COUNT, aboutJobName, CITIES, LOCATION, locationJobName } = this.props
+        const { JOB_LIST, JOB_COUNT, aboutJobName, CITIES, LOCATION, locationJobName ,Job_FAQ_List} = this.props
+        // console.log(Job_FAQ_List.map((item)=>{
+        //  return item.ANSWER
+        // }),"Job FAQ");
         const { filterdata, alertName, mobile, email, TOP_COMPANY_IMAGES, AllJobList, location, count, productList } = this.state
         return (
             <React.Fragment>
@@ -316,64 +333,65 @@ class JobLists extends Component {
                                     </div>}
                             </div>
                         </div>
+                        {this.state.showModal && (
+                            <div className="modal modal_outer right_modal fade" id="information_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" >
+                                <div className="modal-dialog" role="document">
+                                    <div id="get_quote_frm">
+                                        <div className="modal-content ">
+                                            <div className="modal-header">
+                                                <h2 className="modal-title">Receive jobs for your search!</h2>
+                                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <p className='poptext'>We will send you jobs based on your search criteria as soon as they are posted</p>
+                                            <div className="modal-body get_quote_view_modal_body">
+                                                <p>You are saving alert for your search query <strong>{locationJobName == undefined ? aboutJobName == "Fresher Jobs" ? "Fresher Jobs" : aboutJobName == "MostPopular Video JD Jobs" ? "MostPopular Video JD Jobs" : aboutJobName == "HotSectors Video JD Jobs" ? "HotSectors Video JD Jobs" : aboutJobName == "PartTime Jobs" ? " Part Time Jobs" : aboutJobName == "Walk-in-jobs" ? "Walk-in-jobs" : aboutJobName == "Work-From-Home jobs" ? "Work-From-Home jobs" : aboutJobName == "Remote Jobs" ? "Remote Jobs" : `${aboutJobName} Jobs` : `Jobs In ${locationJobName}`}</strong></p>
 
-                        <div className="modal modal_outer right_modal fade" id="information_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" >
-                            <div className="modal-dialog" role="document">
-                                <div id="get_quote_frm">
-                                    <div className="modal-content ">
-                                        <div className="modal-header">
-                                            <h2 className="modal-title">Receive jobs for your search!</h2>
-                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <p className='poptext'>We will send you jobs based on your search criteria as soon as they are posted</p>
-                                        <div className="modal-body get_quote_view_modal_body">
-                                            <p>You are saving alert for your search query <strong>{locationJobName == undefined ? aboutJobName == "Fresher Jobs" ? "Fresher Jobs" : aboutJobName == "MostPopular Video JD Jobs" ? "MostPopular Video JD Jobs" : aboutJobName == "HotSectors Video JD Jobs" ? "HotSectors Video JD Jobs" : aboutJobName == "PartTime Jobs" ? " Part Time Jobs" : aboutJobName == "Walk-in-jobs" ? "Walk-in-jobs" : aboutJobName == "Work-From-Home jobs" ? "Work-From-Home jobs" : aboutJobName == "Remote Jobs" ? "Remote Jobs" : `${aboutJobName} Jobs` : `Jobs In ${locationJobName}`}</strong></p>
+                                                <form className='alertform-box'>
+                                                    <div className="form-group">
+                                                        <label className="create-job-alert-label">Alert Name</label>
+                                                        <input type="text"
+                                                            name={alertName.name}
+                                                            value={alertName.value}
+                                                            onChange={this.handleChange}
+                                                            className="form-control"
+                                                            placeholder="Alert Name" />
+                                                        {alertName.error.length > 0 && !alertName.value && <span className='text-danger ml-1'>{alertName.error}</span>}
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <label className="create-job-alert-label">Mobile No.</label>
+                                                        <NumberFormat type="text"
+                                                            name={mobile.name}
+                                                            onChange={this.handleChange}
+                                                            maxLength={10}
+                                                            className="form-control"
+                                                            placeholder="Enter your mobile no." />
+                                                        {mobile.error.length > 0 && !mobile.value && <span className='text-danger ml-1'>{mobile.error}</span>}
 
-                                            <form className='alertform-box'>
-                                                <div className="form-group">
-                                                    <label className="create-job-alert-label">Alert Name</label>
-                                                    <input type="text"
-                                                        name={alertName.name}
-                                                        value={alertName.value}
-                                                        onChange={this.handleChange}
-                                                        className="form-control"
-                                                        placeholder="Alert Name" />
-                                                    {alertName.error.length > 0 && !alertName.value && <span className='text-danger ml-1'>{alertName.error}</span>}
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <label className="create-job-alert-label">Email ID</label>
+                                                        <input type="text"
+                                                            name={email.name}
+                                                            value={email.value}
+                                                            onChange={this.handleChange}
+                                                            className="form-control"
+                                                            placeholder="Enter your active Email ID" />
+                                                        {email.error.length > 0 && !email.value && <span className='text-danger ml-1'>{email.error}</span>}
+
+                                                    </div>
+                                                </form>
+                                                <p className='alert-help-text'> Help us send you relevant jobs by adding more details to your job alert preferences </p>
+                                                <div className='alert-save-btn'>
+                                                    <a href='' onClick={e => this.onSubmit(e)}>SAVE</a>
                                                 </div>
-                                                <div className="form-group">
-                                                    <label className="create-job-alert-label">Mobile No.</label>
-                                                    <input type="text"
-                                                        name={mobile.name}
-                                                        onChange={this.handleChange}
-                                                        className="form-control"
-                                                        placeholder="Enter your mobile no." />
-                                                    {mobile.error.length > 0 && !mobile.value && <span className='text-danger ml-1'>{mobile.error}</span>}
-
-                                                </div>
-                                                <div className="form-group">
-                                                    <label className="create-job-alert-label">Email ID</label>
-                                                    <input type="text"
-                                                        name={email.name}
-                                                        value={email.value}
-                                                        onChange={this.handleChange}
-                                                        className="form-control"
-                                                        placeholder="Enter your active Email ID" />
-                                                    {email.error.length > 0 && !email.value && <span className='text-danger ml-1'>{email.error}</span>}
-
-                                                </div>
-                                            </form>
-                                            <p className='alert-help-text'> Help us send you relevant jobs by adding more details to your job alert preferences </p>
-                                            <div className='alert-save-btn'>
-                                                <a href='' onClick={e => this.onSubmit(e)}>SAVE</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
+                        )}
                         <div className="rg-haslayout">
 
                             <div className="container">
@@ -389,7 +407,7 @@ class JobLists extends Component {
 
                                                     {!this.props?.location?.state?.hideJobAlert && <div className='sendme-jobs'>
 
-                                                        <button type="button" className="mt-0" id="modal_view_right" data-toggle="modal" data-target="#information_modal" >Send me jobs like these</button>
+                                                        <button type="button" className="mt-0" id="modal_view_right" data-toggle="modal" data-target="#information_modal" onClick={this.openModal}>Send me jobs like these</button>
                                                     </div>}
                                                 </div>}
                                             {JOB_COUNT !== undefined && JOB_COUNT != 0 && < div className="rg-sortandview">
@@ -428,8 +446,12 @@ class JobLists extends Component {
                                                                         <h3 title={item.JOB_TITLE}><Link href={constant.component.jobdetails.url.replace(':url', dynamicURL)}>{item.JOB_TITLE} </Link></h3>
                                                                         <h6><Link href={constant.component.companydetails.url.replace(':url', URL)} target='_blank'>{item.COMPANY_NAME === null || item.COMPANY_NAME == "[object Object]" ? item.COMPANY_URL : item.COMPANY_NAME}</Link></h6>
                                                                         <div className="companyreviewbox">
-                                                                            <span className="reviewnumber"><i className="fa fa-star"></i></span>
-                                                                            <a href="#"><span className="reviewlink">({item.REVIEW_COUNT ? item.REVIEW_COUNT : 0} Reviews)</span></a>
+                                                                        <span className="reviewnumber">
+                                            <i className="fa fa-star"></i>
+                                          </span>
+                                            <span className="reviewlink">
+                                              ({item.REVIEW_COUNT ? item.REVIEW_COUNT : 0} Reviews)
+                                            </span>
                                                                         </div>
                                                                     </div>
                                                                     <div className="rg-description">
@@ -477,7 +499,13 @@ class JobLists extends Component {
                                                             </div>
                                                             <ul className="rg-professionalinfo">
                                                                 <li><i className="lnr lnr-briefcase"></i><span>{item.WORK_EXP_MIN}-{item.WORK_EXP_MAX} Yrs</span></li>
-                                                                <li><i className="fa fa-rupee"></i><span>{item.IS_HIDE_SALARY_FROM_CANDIDATE === 'Y' ? 'Not disclosed' : item.CTC_MIN + '-' + item.CTC_MAX}</span></li>
+                                                                <li><i className="fa fa-rupee"></i><span>{item.IS_HIDE_SALARY_FROM_CANDIDATE === 'Y' ? 'Not disclosed' : `${item.CTC_MIN >= 100000
+                                                                                                            ? (item.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                                                                                            : item.CTC_MIN
+                                                                                                        } - ${item.CTC_MAX >= 100000
+                                                                                                            ? (item.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                                                                                            : item.CTC_MAX
+                                                                                                        } PA`}</span></li>
                                                                 <li><i className="lnr lnr-map-marker"></i><span title={item.TYPE_OF_WORK_FROM_HOME === 'PRJ' ? 'Remote' : item.TYPE_OF_WORK_FROM_HOME === 'WFHDC' ? 'Temporary Work From Home' : item.CITY}>{item.TYPE_OF_WORK_FROM_HOME === 'PRJ' ? 'Remote' : item.TYPE_OF_WORK_FROM_HOME === 'WFHDC' ? 'Temporary Work From Home' : item.CITY?.length <= 25 ? item.CITY : (item.CITY?.slice(0, 25) + '...')}</span></li>
 
                                                             </ul>
@@ -517,18 +545,43 @@ class JobLists extends Component {
                                                         />
                                                     </ul>
                                                 </nav>}
+                                                {JOB_LIST?.length > 0 &&Job_FAQ_List.length>0? <div style={{float:'left',marginTop:'25px' ,width:'100%'}}>
+                                                        <h2 id='faq' style={{fontSize:'18px'}}>Frequently Asked Questions</h2>
+                                                        <div className="rozgar-quciksolutionbox">
+
+                                                            {Job_FAQ_List&&Job_FAQ_List.length>0&&Job_FAQ_List.map((item, index) => {
+                                                                return (
+                                                                    <Accordion defaultActiveKey="1" >
+                                                                        <Accordion.Item eventKey="0">
+                                                                            <Accordion.Header style={{ padding: '0px' }} >{item.QUESTION}</Accordion.Header>
+                                                                            <Accordion.Body>
+
+                                                                                {nl2br(item.ANSWER)}
+
+                                                                            </Accordion.Body>
+
+                                                                        </Accordion.Item>
+
+                                                                    </Accordion>
+                                                                )
+
+                                                            })}
+                                                        </div>
+
+                                                    </div>:''}
                                             </div>
                                         </div>
+                                       
                                         <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3 float-left">
                                             <aside id="rg-sidebarvtwo" className="rg-sidebar rg-sidebarvtwo">
                                                 {
                                                     this.props.isLocation && <div className="jobscitypage mb-20">
                                                         <ul>
-                                                            <li><a target='_blank' href={constant.component.CityOverview.url.replace(':city', this.props.isLocation.URL)}><i className="fa fa-caret-right"></i> {this.props.isLocation.CITY} - An Overview</a></li>
+                                                            <li><a target='_blank' href={constant.component.CityOverview.url.replace(':city', `${this.props.isLocation.URL}`)}><i className="fa fa-caret-right"></i> {this.props.isLocation.CITY} - An Overview</a></li>
                                                             <li> <Link href={constant.component.topcompanieslist.url} ><i className="fa fa-caret-right"></i>Top Companies</Link></li>
                                                             <li> <Link href={constant.component.interviewQuestion.url} ><i className="fa fa-caret-right"></i>Interview Question</Link></li>
                                                             <li> <Link href={constant.component.studyAbroad.url} ><i className="fa fa-caret-right"></i>Study Abroad</Link></li>
-                                                            <li> <Link href={constant.component.internationalWorkVisas.url} ><i className="fa fa-caret-right"></i>International Work Visa</Link></li>
+                                                            {/* <li> <Link href={constant.component.internationalWorkVisas.url} ><i className="fa fa-caret-right"></i>International Work Visa</Link></li> */}
                                                             <li> <Link href={constant.component.StudentsExplorer.url} ><i className="fa fa-caret-right"></i>Career Explorer</Link></li>
                                                             <li> <Link href={constant.component.careerAstrology.url} ><i className="fa fa-caret-right"></i>Career Astrology</Link></li>
                                                             <li> <Link href={constant.component.ResumeMaking.url} ><i className="fa fa-caret-right"></i>Resume Making</Link></li>

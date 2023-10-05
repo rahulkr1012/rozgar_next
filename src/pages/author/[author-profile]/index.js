@@ -11,7 +11,7 @@ export default function index(props) {
   let { ud} = props
   let router=useRouter ()
   let title= `Know More About Author (${props.authorDetail.AUTHOR_NAME}) Of Rozgar.com`
-  let description=props.authorDetail.ABOUT
+  let description = props.authorDetail.ABOUT
   return (
     <React.Fragment>
         <Head>

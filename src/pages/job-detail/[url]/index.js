@@ -82,8 +82,8 @@ const index = (props) => {
 const onOpenModal = () => {
     setOpenModal(true)
 }
-  return (
 
+  return (
     <React.Fragment>
       <Head>
 

@@ -101,22 +101,24 @@ class ResumeHeadLine extends Component {
         return (
             <React.Fragment>
                 <div className='edprofilerightside'>
-                    <div className='edprojobtext'>Resume Headline <Link href='' className='pofileupdatetext' onClick={() => { this.onShowModal() }}>{this.state.resumeHeadLine && this.state.resumeHeadLine.length > 0 ? 'EDIT RESUME HEADLINE' : 'ADD RESUME HEADLINE'}</Link></div>
+                    
+                     <div className='edprojobtext'>Resume Headline <Link href='' className='pofileupdatetext' onClick={() => { this.onShowModal() }}>{this.state.resumeHeadLine && this.state.resumeHeadLine.length > 0 ? 'EDIT RESUME HEADLINE' : 'ADD RESUME HEADLINE'}</Link></div>
                     {showLoader&&<Loader/>}
 
                     <div className='edprofilerightsideinner bb-01'>
                         <div className='pro-job-details'>
                             <div className='grid03'>
                                 {resumeHeadLine != null ?
-                                    <p>{resumeHeadLine}</p> : <div>
-                                        <Image src={noSearchFound} style={{ display: "block", margin: "0 auto" }} />
+                                     <p>{resumeHeadLine}</p> : <div>
+                                         <Image src={noSearchFound} style={{ display: "block", margin: "0 auto" }} />
                                         <h6 className='text-center text-danger'>No Resume Headline Added</h6>
                                         <p style={{ textAlign: "center" }}> <Link href={''} style={{ color: "#222222", textDecoration: "none", background: "#ffdede", display: "inline-block", borderRadius: "4px", fontSize: "13px", marginTop: "10px", padding: "6px 20px", marginLeft: "12px" }} onClick={() => { this.onShowModal() }} > Please Add Resume Headline  <i style={{ marginLeft: '4px' }} className="fa fa-plus"></i></Link></p>
-                                    </div>}
+                                     </div>}
                             </div>
                         </div>
                     </div>
                 </div>
+                 
                 {showModal && <ModalWindow
                 className = "upd-title-mod"
                     title="Resume Headline"
@@ -130,6 +132,8 @@ class ResumeHeadLine extends Component {
                         props={this.props.router}
                     />
                 </ModalWindow>}
+
+                
             </React.Fragment>
         )
     }

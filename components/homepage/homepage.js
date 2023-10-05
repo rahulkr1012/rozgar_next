@@ -257,9 +257,9 @@ const homepage = (props) => {
     if (mobile.value.length >= 10) {
       const res = await axios.post(`https://sms.rozgar.com/send-app-download-link`, { mobile: mobile.value })
       if (res.data.type === 'success') {
-        setMobile({...mobile, value: '', success: `We have successfully sent App Download link to ${mobile.value}` })
+        setMobile({...mobile, value: '', success: `We have successfully sent App Download link to ${mobile.value}`, error: '' })
         setTimeout(() => {
-          setMobile({ ...mobile,value: '', success: '' })
+          setMobile({ ...mobile,value: '', success: '',error: '' })
         }, 2000);
         
       }
@@ -683,7 +683,7 @@ console.log(KEYWORD.value,"KEYWORD");
                   href={constant.component.resumeMaking.url}
                   className="createCV-btn"
                 >
-                  <i className="ti-pencil-alt"></i> Create a free CV
+                  <i className="ti-pencil-alt"></i> Create CV
                 </Link>
                 <Link
                   target="_blank"
@@ -1570,9 +1570,9 @@ console.log(KEYWORD.value,"KEYWORD");
                     </div>
                   </div>
 
-                  {mobile.success.length > 0 && <span className="text-success">{mobile.success}</span>}
+                  {(mobile.success.length > 0 && <span className="text-success">{mobile.success}</span>) ||
 
-                  {mobile.error.length > 0 && mobile.value.length < 10 && <span className="text-danger">{mobile.error}</span>}
+                  (mobile.error.length > 0 && mobile.value.length < 10 && <span className="text-danger">{mobile.error}</span>)}
                 </div>
                 <div className="col-md-4 d-flex align-items-center">
                   <strong className="applogo">

@@ -16,7 +16,7 @@ export async function getServerSideProps({ res }) {
 
   const formattedDate = `${year}-${month}-${day}`;
 
-  const baseUrl = process.env.BASE_URL || 'https://rozgar.com/jobs/'; // Replace with your website URL
+  const baseUrl = process.env.BASE_URL || 'https://rozgar.com/job/'; // Replace with your website URL
   let job_list = await searchJobBy({
     LIMIT: 1000,
     URL: "mumbai",

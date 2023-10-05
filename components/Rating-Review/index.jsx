@@ -2,9 +2,12 @@ import { AddAuthorReview, updateAuthorReview } from "@/action/CandidateAction";
 import { capFirstLetterInSentence } from "@/utils";
 import constant from "constant";
 import { getCookie } from "cookies-next";
+import Image from "next/image";
 import React, { Component } from "react";
 import { FaStar } from "react-icons/fa";
 import swal from "sweetalert";
+import authorimg from 'src/assets/images/picss.png'
+
 // import "./RatingReview.css";
 
 class RatingReview extends Component {

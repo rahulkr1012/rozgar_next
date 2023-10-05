@@ -372,7 +372,7 @@ Blog Grid Start
                                       ]);
                                       var days = b.diff(a, "days");
                                       // const dynamicURLOne = ToSeoUrl(data.JOB_TITLE) + '_' + ToSeoUrl(data.JOB_DETAILS) + '_' + 'EXP' + '-' + ToSeoUrl(data.WORK_EXP_MIN) + '_' + ToSeoUrl(data.WORK_EXP_MAX) + '_' + data.CUSTOM_JOB_ID + '_' + ToSeoUrl(data.KEYWORDS) + '?src=SIMILAR_JOBS=' + data.JOB_ID
-                                      let dynamicURLOne =ToSeoUrl(data.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(data.JOB_TITLE) + '-' + data.JOB_ID
+                                      let dynamicURLOne = ToSeoUrl(data.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(data.JOB_TITLE) + '-' + data.JOB_ID
                                       dynamicURLOne = dynamicURLOne.replace(
                                         / /g,
                                         ""
@@ -438,13 +438,13 @@ Blog Grid Start
                                                 </h3>
                                                 <h6>{data.COMPANY_NAME}</h6>
                                                 <div className="companyreviewbox">
-                                                 
+
                                                   <span className="reviewnumber">
                                                     <i className="fa fa-star"></i>
                                                   </span>
                                                   <a href="#">
                                                     <span className="reviewlink">
-                                                    ({data.REVIEW_COUNT ? data.REVIEW_COUNT : 0} Reviews)
+                                                      ({data.REVIEW_COUNT ? data.REVIEW_COUNT : 0} Reviews)
                                                     </span>
                                                   </a>
                                                 </div>
@@ -550,7 +550,13 @@ Blog Grid Start
                                                 {data.CTC_MIN === "" &&
                                                   data.CTC_MAX === ""
                                                   ? "Not Disclosed"
-                                                  : `${data.CTC_MIN} - ${data.CTC_MAX}`}
+                                                  : `${data.CTC_MIN >= 100000
+                                                    ? (data.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                                    : data.CTC_MIN
+                                                  } - ${data.CTC_MAX >= 100000
+                                                    ? (data.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                                    : data.CTC_MAX
+                                                  } PA`}
                                               </span>
                                             </li>
                                             <li>

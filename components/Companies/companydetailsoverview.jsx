@@ -85,14 +85,14 @@ export default class companydetailsoverview extends Component {
 
                                             jobs && jobs.list && jobs.list.length > 0 && jobs.list.map((item, index) => {
                                                 const nameInitial = item.COMPANY_NAME.split(' ').map((i) => i.substring(0, 1)).join('')
-                                                const dynamicURL =ToSeoUrl(item.CITY.trim().split(',')[0])+'/' + ToSeoUrl(item.JOB_TITLE) + '-' + item.JOB_ID
-                                                    // ToSeoUrl(item.JOB_TITLE) +
-                                                    // "-" +
-                                                    // ToSeoUrl(item.COMPANY_NAME) +
-                                                    // "-" +
-                                                    // item.CITY?.toLowerCase().split(",").join("-") +
-                                                    // "-" +
-                                                    // item.JOB_ID;
+                                                const dynamicURL = ToSeoUrl(item.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(item.JOB_TITLE) + '-' + item.JOB_ID
+                                                // ToSeoUrl(item.JOB_TITLE) +
+                                                // "-" +
+                                                // ToSeoUrl(item.COMPANY_NAME) +
+                                                // "-" +
+                                                // item.CITY?.toLowerCase().split(",").join("-") +
+                                                // "-" +
+                                                // item.JOB_ID;
 
                                                 return (
                                                     <div class="rg-featurejob">
@@ -111,7 +111,13 @@ export default class companydetailsoverview extends Component {
                                                             </div>
                                                             <ul class="jobcompanyhiringdetails" >
                                                                 <li><i class="lnr lnr-briefcase"></i> {item.WORK_EXP_MIN}-{item.WORK_EXP_MAX} Yrs</li>
-                                                                <li><i class="fa fa-rupee"></i> {item?.IS_HIDE_SALARY_FROM_CANDIDATE === 'Y' ? 'Not disclosed' : item?.CTC_MIN + '-' + item?.CTC_MAX}</li>
+                                                                <li><i class="fa fa-rupee"></i> {item?.IS_HIDE_SALARY_FROM_CANDIDATE === 'Y' ? 'Not disclosed' : `${item?.CTC_MIN >= 100000
+                                                                    ? (item?.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                                                    : item?.CTC_MIN
+                                                                    } - ${item?.CTC_MAX >= 100000
+                                                                        ? (item?.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                                                        : item?.CTC_MAX
+                                                                    } PA`}</li>
                                                                 <li><i class="lnr lnr-map-marker"></i> {item.CITY?.length > 18 ? Parser(item.CITY.slice(0, 18)) + '...' : Parser(item.CITY)}</li>
                                                             </ul>
                                                             <div class="roz-companyjobtans">

@@ -166,8 +166,8 @@ const MainSlider = (props) => {
                                                                 if (index < 2) {
                                                                     return (
                                                                         <a>
-                                                                            {item.length > 30
-                                                                                ? `${item.slice(0, 25)}...`
+                                                                            {item.length > 25
+                                                                                ? `${item.slice(0, 20)}...`
                                                                                 : item}
                                                                         </a>
                                                                     );

@@ -55,7 +55,7 @@ export const makeStore = ({ isServer })=> {
     );
 
     store.__persistor = persistStore(store);
-
+    
     return store;
      
   }

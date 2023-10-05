@@ -23,7 +23,7 @@ const component = {
     topcompanieslist: { url: '/top-companies' },
     companydetails: { url: '/company/:url' },
     jobbycity: { url: '/job-by-city' },
-    CityOverview: { url: '/:city-an-overview' },
+    CityOverview: { url: '/overview/:city' },
     blog: { url: '/blog' },
     blogDetails: { url: '/blog-details' },
     faqs: { url: '/faq' },
@@ -463,7 +463,8 @@ const course_list = [
 ]
 
 
-
+ 
+export const  s3_url  = 'https://s3rozgar.s3.ap-south-1.amazonaws.com/resume/'
 
 const metaDescription = " - Search, find and apply to job opportunities at Rozgar.com - India's leading Job Portal. Bring your perception, imagination and healthy neglect for the impossible. For query call us at +91-8800277577 or email us at contact@rozgar.com"
 export default { component, keys, version, currency, title, build, metaDescription, MasterData, course_list }

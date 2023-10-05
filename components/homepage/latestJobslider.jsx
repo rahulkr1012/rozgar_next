@@ -123,7 +123,7 @@ const MainSlider = (props) => {
                                 ? item.COMPANY_NAME + "-" + item.EMPLOYER_ID
                                 : "rozgar" + "-" + item.EMPLOYER_ID;
 
-                            let dynamicURLOne =ToSeoUrl(item.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(item.JOB_TITLE) + '-' + item.JOB_ID
+                            let dynamicURLOne =ToSeoUrl(item.CITY?.trim().split(',')[0]) + '/' + ToSeoUrl(item.JOB_TITLE) + '-' + item.JOB_ID
 
                             dynamicURLOne = dynamicURLOne.replace(/ /g, "");
 
@@ -180,7 +180,7 @@ const MainSlider = (props) => {
                                                             )}
                                                             target="_blank"
                                                         >
-                                                            {item.COMPANY_NAME.length > 20
+                                                            {item.COMPANY_NAME.length > 18
                                                                 ? item.COMPANY_NAME.slice(0, 16) +
                                                                 "...."
                                                                 : item.COMPANY_NAME}

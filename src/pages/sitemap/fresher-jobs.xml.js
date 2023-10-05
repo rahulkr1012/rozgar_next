@@ -15,7 +15,7 @@ export async function getServerSideProps({ res }) {
   const day = String(date.getDate()).padStart(2, '0');
   const formattedDate = `${year}-${month}-${day}`;
 
-  const baseUrl = process.env.BASE_URL || 'https://rozgar.com/jobs/'; // Replace with your website URL
+  const baseUrl = process.env.BASE_URL || 'https://rozgar.com/job/'; // Replace with your website URL
   let job_list = await latestfresherjobs({ limit: 2544, page: 1, filter: {} })
   const sitemapItems = job_list.result.list.map((item) => {
     const URL = item.COMPANY_URL ? item.COMPANY_URL + '-' + item.EMPLOYER_ID : 'rozgar' + '-' + item.EMPLOYER_ID;

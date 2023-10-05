@@ -36,3 +36,20 @@ export const PaymentDetail = (TXN_ID) => {
         return res.data;
     })
 };
+
+
+
+export const purchaseResume = (model) => {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/rzg-purchase-resume`;
+    return axios.post(url, model, getCandidateAuthHeader()).then((res) => {
+        return res.data;
+    })
+};
+
+
+export const saveResumePaymentDetail = (model) => {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/rzg-save-resume-payment-detail`;
+    return axios.post(url, model, getCandidateAuthHeader()).then((res) => {
+        return res.data;
+    })
+};

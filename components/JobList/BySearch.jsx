@@ -101,7 +101,7 @@ class JobLists extends Component {
         .then((res) => {
           if (res.status) {
 
-           // window.location.reload();
+            // window.location.reload();
           } else {
             alert(res.error);
           }
@@ -541,7 +541,7 @@ class JobLists extends Component {
                             const URL = item.COMPANY_URL
                               ? item.COMPANY_URL + "-" + item.EMPLOYER_ID
                               : "rozgar" + "-" + item.EMPLOYER_ID;
-                            let dynamicURL =ToSeoUrl(item.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(item.JOB_TITLE) + '-' + item.JOB_ID
+                            let dynamicURL = ToSeoUrl(item.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(item.JOB_TITLE) + '-' + item.JOB_ID
                             dynamicURL = dynamicURL.replace(/ /g, "");
                             return (
                               <React.Fragment>
@@ -638,11 +638,9 @@ class JobLists extends Component {
                                           <span className="reviewnumber">
                                             <i className="fa fa-star"></i>
                                           </span>
-                                          <a href="#">
                                             <span className="reviewlink">
                                               ({item.REVIEW_COUNT ? item.REVIEW_COUNT : 0} Reviews)
                                             </span>
-                                          </a>
                                         </div>
                                       </div>
                                       <div className="rg-description">
@@ -767,7 +765,13 @@ class JobLists extends Component {
                                         {item.IS_HIDE_SALARY_FROM_CANDIDATE ===
                                           "Y"
                                           ? "Not disclosed"
-                                          : capFirstLetterInSentence(numbertoWord(item.CTC_MIN)) + " - " + capFirstLetterInSentence(numbertoWord(item.CTC_MAX))}
+                                          : `${item.CTC_MIN >= 100000
+                                            ? (item.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                            : item.CTC_MIN
+                                          } - ${item.CTC_MAX >= 100000
+                                            ? (item.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                            : item.CTC_MAX
+                                          } PA`}
                                       </span>
                                     </li>
                                     <li>

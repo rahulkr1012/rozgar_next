@@ -1,0 +1,11 @@
+version: '3'
+services:
+  nextapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /var/www/www.rozgar.com/rozgar-v2new:/var/www/rozgar-v2new
+    ports:
+      - 5027:3000
+

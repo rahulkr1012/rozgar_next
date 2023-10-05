@@ -8,6 +8,7 @@ import FilteredHeader from 'components/Filtered_Header'
 import constant from 'constant';
 import { getLoggedInUserData } from 'nextCookie';
 import Head from 'next/head';
+import { FAQOurBlog } from '@/action/FAQAction';
 
  
 let PersonalRecruiter = dynamic(
@@ -59,7 +60,9 @@ let PersonalRecruiter = dynamic(
       </Head>
 
          <FilteredHeader ud={ud} />
-        <PersonalRecruiter />
+        <PersonalRecruiter 
+          FAQ_Blog_List={props.FAQ_Blog_List}
+        />
     </React.Fragment>
   )
 }
@@ -68,11 +71,14 @@ export default withRouter(index)
 
 export async function getServerSideProps({ req }) {
     let ud = getLoggedInUserData(req)
-
+    let  FAQ_Blog_List  = await FAQOurBlog()
     return {
         props: {
-            ud: ud
+            ud: ud,
+            FAQ_Blog_List:FAQ_Blog_List
         }
     }
 
 }
+
+

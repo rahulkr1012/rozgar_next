@@ -24,6 +24,7 @@ import SignInForApplyJobs from 'components/signin/signInForApplyJobs';
 import { getCookie } from 'cookies-next';
 import { withRouter } from 'next/router';
 import Loader from 'components/spinner';
+import FaqBlog from 'components/FAQ_Blog/index';
 
 
 
@@ -197,6 +198,7 @@ export default withRouter(class PersonalRecruiter extends Component {
   }
 
   onPurchase = (data) => {
+    debugger
     if (!getCookie(constant.keys.cd)) {
       window.location.href = constant.component.signin.url + `?personalRecruiter=true`
     }
@@ -235,7 +237,7 @@ export default withRouter(class PersonalRecruiter extends Component {
                   TXN_STATUS: "SUCCESS",
 
                 }).then((response) => {
-                  
+
                   if (response.status) {
                     window.location.href =
                       '/payment/success' + "?txn=" +
@@ -266,6 +268,7 @@ export default withRouter(class PersonalRecruiter extends Component {
   render() {
     const { MasterData, SERVICES, PACKAGES, PACKAGES_NAME, showShimmer, showLoginModal, showLoader } = this.state
     const { name, email, mobile, message } = this.state
+    const { FAQ_Blog_List } = this.props
     const resumewritebg = {
       backgroundImage: 'url(assets/images/white-left-divider.png)',
       backgroundRepeat: 'no-repeat',
@@ -587,12 +590,13 @@ export default withRouter(class PersonalRecruiter extends Component {
           </div>
 
         </section>
-        <section class="rozgar-recruiter-blog-section">
+        {/* <section class="rozgar-recruiter-blog-section">
           <div className="container">
             <div className="row">
               <div className="col-md-12 col-sm-12">
                 <div className="rozgar-section-blog-title">
                   <h4>Latest Blogs</h4>
+                  <a target='_blank' className="rg-btnviewall" href={constant.component.blog.url}>View All</a>
                 </div>
 
               </div>
@@ -676,6 +680,11 @@ export default withRouter(class PersonalRecruiter extends Component {
               </div>
             </div>
           </div>
+        </section> */}
+        <section class="rozgar-recruiter-blog-section">
+          <FaqBlog
+            FAQ_Blog_List={FAQ_Blog_List}
+          />
         </section>
 
 

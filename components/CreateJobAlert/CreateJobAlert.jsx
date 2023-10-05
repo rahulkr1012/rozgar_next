@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import { Typeahead } from 'react-bootstrap-typeahead'
 import  NumericFormatBase  from 'react-number-format'
 import swal from 'sweetalert'
+import { clearForm } from 'utils'
 
 export default class CreateJobAlert extends Component {
     constructor(props) {
@@ -118,7 +119,7 @@ export default class CreateJobAlert extends Component {
         let error = {}
         let isValid = true
 
-        if (data['KEYWORD'].value.length==0) {
+        if (data['KEYWORD'].value.length ===0) {
             let KEYWORD = data['KEYWORD']
             KEYWORD.error = "Please Enter Keyword"
             isValid = false
@@ -174,7 +175,7 @@ export default class CreateJobAlert extends Component {
             }
         }
 
-        if (!data['LOCATION'].value) {
+        if (data['LOCATION'].value.length ===0) {
             let LOCATION = data['LOCATION']
             LOCATION.error = "Please Enter Location"
             isValid = false
@@ -251,8 +252,18 @@ export default class CreateJobAlert extends Component {
                             showCancelButton: false,
                             showConfirmButton: false,
                         });
-                        window.location.reload()
-
+                       
+                      this.setState({
+                        totalExperience: {value: '' },
+                        LOCATION: { value: [] },
+                        email: {value: '' },
+                        KEYWORD: { value: [] },
+                        prefferedIndustry: {  value: '' },
+                        prefferedDepartment: {  value: '' },
+                        alertName: {value: '' },
+                        mobile: { value: '' },
+                        jobalertName: {  value: '' },
+                                          })
                     }
                     else {
                         alert(res.error)
@@ -335,10 +346,10 @@ export default class CreateJobAlert extends Component {
                                                         emptyLabel
                                                     // style={{paddingLeft:"10px"}}
                                                     />
-                                                    {KEYWORD.error.length > 0 &&  <span className='text-danger ml-1'>{KEYWORD.error}</span>}
+                                                    {KEYWORD && KEYWORD.error && KEYWORD.value.length === 0 && <span className='text-danger ml-1'>{KEYWORD.error}</span>}
                                                 </div>
                                                 <div class="form-group">
-                                                    <label className='create-job-alert-label'>Total Experience</label>
+                                                    <label className='create-job-alert-label'>Total Experience<span className='label-required'>*</span></label>
                                                     <span class="rg-select">
                                                         <select class="form-control"
                                                             name={totalExperience.name}
@@ -397,16 +408,16 @@ export default class CreateJobAlert extends Component {
                                                             <option value='48 Year'>48 Years</option>
                                                             <option value='49 Year'>49 Years</option>
                                                             <option value='50 Year'>50 Years</option>
-
                                                         </select>
-                                                        {totalExperience.error.length > 0 && !totalExperience.value && <span className='text-danger ml-1'>{totalExperience.error}</span>}
+                                                        {totalExperience && totalExperience.error && !totalExperience.value && <span className='text-danger ml-1'>{totalExperience.error}</span>}
 
                                                     </span>
                                                 </div>
                                             </div>
+                                             
                                             <div className='towform'>
                                                 <div class="form-group">
-                                                    <label className='create-job-alert-label'>Preferred Location</label>
+                                                    <label className='create-job-alert-label'>Preferred Location<span className='label-required'>*</span></label>
                                                     <Typeahead
                                                         className='form-control'
                                                         id='location'
@@ -425,10 +436,10 @@ export default class CreateJobAlert extends Component {
                                                         emptyLabel
                                                         style={{ paddingLeft: "10px" }}
                                                     />
-                                                    {LOCATION.error.length > 0 && !LOCATION.value && <span className='text-danger ml-1'>{LOCATION.error}</span>}
+                                                    {LOCATION && LOCATION.error && LOCATION.value.length === 0 && <span className='text-danger ml-1'>{LOCATION.error}</span>}
                                                 </div>
                                                 <div class="form-group">
-                                                    <label className='create-job-alert-label'>Preferred Industry</label>
+                                                    <label className='create-job-alert-label'>Preferred Industry<span className='label-required'>*</span></label>
                                                     <span class="rg-select">
                                                         <select class="form-control"
                                                             name={prefferedIndustry.name}
@@ -441,7 +452,7 @@ export default class CreateJobAlert extends Component {
                                                             ))
                                                             }
                                                         </select>
-                                                        {prefferedIndustry.error.length > 0 && !prefferedIndustry.value && <span className='text-danger ml-1'>{prefferedIndustry.error}</span>}
+                                                        {prefferedIndustry && prefferedIndustry.error && !prefferedIndustry.value && <span className='text-danger ml-1'>{prefferedIndustry.error}</span>}
                                                     </span>
                                                 </div>
                                             </div>
@@ -460,7 +471,7 @@ export default class CreateJobAlert extends Component {
                                                             ))
                                                             }
                                                         </select>
-                                                        {prefferedDepartment.error.length > 0 && !prefferedDepartment.value && <span className='text-danger ml-1'>{prefferedDepartment.error}</span>}
+                                                        {prefferedDepartment && prefferedDepartment.error && !prefferedDepartment.value && <span className='text-danger ml-1'>{prefferedDepartment.error}</span>}
                                                     </span>
                                                 </div>
                                                 <div class="form-group">
@@ -471,7 +482,7 @@ export default class CreateJobAlert extends Component {
                                                         onChange={this.handleChange}
                                                         class="form-control"
                                                         placeholder="Enter a name for this job alert" />
-                                                    {jobalertName.error.length > 0 && !jobalertName.value && <span className='text-danger ml-1'>{jobalertName.error}</span>}
+                                                    {jobalertName && jobalertName.error && !jobalertName.value && <span className='text-danger ml-1'>{jobalertName.error}</span>}
                                                 </div>
                                             </div>
                                             <div className='towform'>
@@ -485,7 +496,7 @@ export default class CreateJobAlert extends Component {
                                                         placeholder="Enter your email id"
                                                         style={{ paddingLeft: "10px" }}
                                                     />
-                                                    {email.error.length > 0 && <span className='text-danger ml-1'>{email.error}</span>}
+                                                    {email && email.error && !email.value && <span className='text-danger ml-1'>{email.error}</span>}
                                                 </div>
                                                 <div class="form-group">
                                                     <label className='create-job-alert-label'>Name <span className='label-required'>*</span></label>
@@ -497,16 +508,16 @@ export default class CreateJobAlert extends Component {
                                                         placeholder="Enter your name"
                                                         style={{ paddingLeft: "10px" }}
                                                     />
-                                                    {alertName.error.length > 0 && !alertName.value && <span className='text-danger ml-1'>{alertName.error}</span>}
+                                                    {alertName && alertName.error && !alertName.value && <span className='text-danger ml-1'>{alertName.error}</span>}
                                                 </div>
                                             </div>
                                             <div className='towform'>
                                                 <div class="form-group" style={{ width: '48.5%' }}>
                                                     <label className='create-job-alert-label'>Mobile <span className='label-required'>*</span></label>
-                                                    <NumericFormatBase type="phone"
+                                                    
+                                                     <NumericFormatBase type="phone"
                                                         name={mobile.name}
                                                         maxLength={10}
-
                                                         onChange={(e) => {
                                                             if (e.target.value !== "") {
                                                                 const regexExp = /^[6789][0-9]{9}/
@@ -526,7 +537,8 @@ export default class CreateJobAlert extends Component {
 
                                                         style={{ paddingLeft: "10px" }}
                                                     />
-                                                    {mobile.error.length > 0 && !mobile.value && <span className='text-danger ml-1'>{mobile.error}</span>}
+                                                    
+                                                    {mobile && mobile.error && !mobile.value && <span className='text-danger ml-1'>{mobile.error}</span>}
                                                 </div>
                                             </div>
                                             <div className='create-free-jobs-alert-btn'>
@@ -601,13 +613,15 @@ export default class CreateJobAlert extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                     </div>
                 </main>
-     </React.Fragment>
+        </React.Fragment>
     )
   }
 }
+
+

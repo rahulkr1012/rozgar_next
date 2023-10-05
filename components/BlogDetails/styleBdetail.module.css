@@ -1,4 +1,4 @@
-.bgbloghead{background-color:#15171a; padding:40px 0px; background: url('../../src/assets/images/blogbgimg.jpg');}
+.bgbloghead{background-color:#15171a; padding:40px 0px; background: url('../../src/assets/images/blogbgimg.jpg');background-size: 100%;}
 
 .blogareahead{padding:40px 0px; text-align: center;}
 .blogareahead h1{font-size:30px; color: #ffffff; text-align: center;}
@@ -21,11 +21,12 @@
 .blogaside{overflow:auto;  position:-webkit-sticky;  position:sticky;  top:15%; float:left;
     width:300px; margin-right:14px;}
 
-.contentmenu{    background: #fff;
+.contentmenu{    background:#fff4f4;
     border-right: none;
     padding: 20px;
     border-radius: 4px;
-    display: flow-root;}
+    display: flow-root;border: 1px solid #e81c28;
+    margin-bottom: 10px;}
 .contentmenu h3{color:#444; font-weight:500; margin-bottom:14px;}
 .contentmenu ul{margin:0px; padding:0px;}
 .contentmenu ul li{list-style:none; margin-bottom:10px; line-height:1.4;}
@@ -109,4 +110,16 @@
 }
 .contentmenu h4{font-size: 20px;font-weight: 600;}
 .contentmenu h3{font-size:14px !important;margin-left: 15px;margin-bottom: 5px;}
-.contentmenu h2{font-size:18px !important;font-weight: 600;}
+.contentmenu h2{font-weight: 500;
+    font-size: 16px !important;
+    margin-left: 15px;
+    margin-bottom: 5px;position: relative;padding-left: 18px;}
+    .contentmenu h2:before{position: absolute;
+        content: '';
+        width: 8px;
+        height: 8px;
+        left: 0px;
+        top: 7px;
+        background: #e81c28;
+        border-radius: 2px;}
+.blogtagarea h2{margin-bottom: 15px;}        

@@ -10,7 +10,7 @@ function index(props) {
      
     let {FAQ_Blog_List }  = props
      
-    let  blogList  = FAQ_Blog_List.result.list
+    let  blogList  = FAQ_Blog_List?.result?.list
 console.log(blogList);
        
    return (
@@ -34,7 +34,7 @@ console.log(blogList);
                                         return (
                                             <div className="rg-faqsourblog linefix item col-md-4 p-0 m-1">
                                                 <a target='_blank' className="rg-bglight" href={constant.component.blogDetail.url.replace(':url', item.URL)}>
-                                                    <img style={{ height: "200px", objectFit: "cover" }} src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/Picture/${item.BLOG_IMAGE}`} alt="image description" />
+                                                    <img style={{ height: "250px", objectFit: "cover" }} src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/Picture/${item.BLOG_IMAGE}`} alt="image description" />
                                                 </a>
                                                 <div className='p-4'>
                                                     <div target='_blank' className="rg-bglight blogtihead" href={constant.component.blogDetail.url.replace(':url', item.URL)}>

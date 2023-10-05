@@ -26,9 +26,9 @@ export default class RecommendedJobs extends Component {
         this.uploaded = false
         this.state = {
             list: null,
-            detail:  getCookie(constant.keys.cd)
-            ? JSON.parse(getCookie(constant.keys.cd))
-            : {},
+            detail: getCookie(constant.keys.cd)
+                ? JSON.parse(getCookie(constant.keys.cd))
+                : {},
             addUpdate: getCookie(constant.keys.addAndUpdate) ? JSON.parse(getCookie(constant.keys.addAndUpdate)) : {},
             showShimmer: true,
             toastContent: false,
@@ -43,14 +43,14 @@ export default class RecommendedJobs extends Component {
         };
     }
 
-     
+
 
 
     componentDidMount() {
-        debugger
-        const { CANDIDATE_ID } = this.state.detail  ? this.state.detail :''
+        
+        const { CANDIDATE_ID } = this.state.detail ? this.state.detail : ''
         const { JOB_ID } = this.state.addUpdate ? this.state.addUpdate : "";
-        const saveJobId = getCookie("saveJobId") ? getCookie("saveJobId") :'';
+        const saveJobId = getCookie("saveJobId") ? getCookie("saveJobId") : '';
         const unSaveJobId = getCookie("unSaveJobId")
         //only one button is going to archieve at a time
         if (this.state.reRender) {
@@ -62,7 +62,7 @@ export default class RecommendedJobs extends Component {
                 deleteCookie("unSaveJobId")
             }
         }
-         
+
         this.savedJobsDetail()
         if (JOB_ID) {
             this.getJobQuestion(JOB_ID);
@@ -70,7 +70,7 @@ export default class RecommendedJobs extends Component {
         this.RecommendedJobsList(this.state.currentPage)
     }
 
-    
+
     getSavedJobs = (model) => {
         SaveJobs(model).then((res) => {
             this.setState({ saveState: res.result })
@@ -81,7 +81,7 @@ export default class RecommendedJobs extends Component {
         // this.savedJobsDetail()
     }
 
-     
+
     handlePageChange = (pageNumber) => {
         this.state.currentPage = (pageNumber);
         this.setState({
@@ -91,7 +91,7 @@ export default class RecommendedJobs extends Component {
     };
 
 
-     
+
 
     getResume = async () => {
         const { CANDIDATE_ID } = this.props.ud ? this.props.ud : ''
@@ -124,7 +124,7 @@ export default class RecommendedJobs extends Component {
             this.getSavedJobs({ CANDIDATE_ID: CANDIDATE_ID, JOB_ID: JOB_ID, ACTION: "save" })
             this.setState({ saveList: [...this.state.saveList, JOB_ID] })
         } else {
-            setCookie("saveJobId", {JOB_ID:JOB_ID})
+            setCookie("saveJobId", { JOB_ID: JOB_ID })
             this.setState({ openModal: true })
         }
     }
@@ -203,52 +203,52 @@ export default class RecommendedJobs extends Component {
             });
     };
 
-    applyJobsWithQuestion = (model , cvl_model) => {
+    applyJobsWithQuestion = (model, cvl_model) => {
 
         const { JOB_ID } = this.state.addUpdate ? this.state.addUpdate : "";
         model.JOB_ID = JOB_ID
-        
+
         window.scroll(0, 0)
 
         applyJobs(model)
             .then((res) => {
                 debugger
                 if (res.status) {
-                     
-                        if(Object.keys(cvl_model).length==0) {
-                                this.setState({...this.state ,  toastContent: true });
-                                deleteCookie("addAndUpdate");
-                                deleteCookie('JobUrl');
-                                deleteCookie('saveJobId');
-                                this.closeModel()
-                                window.scrollTo(0, 0);
 
-                            }else{
-                                window.scrollTo(0, 0);
-                                 // save a new cvl and selected equals to 1 
-                                    if(!cvl_model.modify) {
+                    if (Object.keys(cvl_model).length == 0) {
+                        this.setState({ ...this.state, toastContent: true });
+                        deleteCookie("addAndUpdate");
+                        deleteCookie('JobUrl');
+                        deleteCookie('saveJobId');
+                        this.closeModel()
+                        window.scrollTo(0, 0);
 
-                                        axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/save-cover-letter`,
-                                        cvl_model , getCandidateAuthHeader() ).then(resposne=>{
-                                                if(resposne.data.status) {
-                                                    this.setState({ ...this.state , toastContent: true });
-                                                    deleteCookie("addAndUpdate");
-                                                    deleteCookie('JobUrl');
-                                                    deleteCookie('saveJobId');
-                                                }                  
-                                      this.closeModel()
-                                        }).catch(err=>{
-                                        alert('some error occured ')
-                                        })
-                                         
-                                    }else{
-                                        this.closeModel()
-                                        window.scrollTo(0, 0);
-                                  
+                    } else {
+                        window.scrollTo(0, 0);
+                        // save a new cvl and selected equals to 1 
+                        if (!cvl_model.modify) {
+
+                            axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/save-cover-letter`,
+                                cvl_model, getCandidateAuthHeader()).then(resposne => {
+                                    if (resposne.data.status) {
+                                        this.setState({ ...this.state, toastContent: true });
+                                        deleteCookie("addAndUpdate");
+                                        deleteCookie('JobUrl');
+                                        deleteCookie('saveJobId');
                                     }
+                                    this.closeModel()
+                                }).catch(err => {
+                                    alert('some error occured ')
+                                })
 
-                          }
-                  
+                        } else {
+                            this.closeModel()
+                            window.scrollTo(0, 0);
+
+                        }
+
+                    }
+
                 } else {
                     swal({
                         icon: "error",
@@ -268,7 +268,7 @@ export default class RecommendedJobs extends Component {
     };
 
     RecommendedJobsList = (page) => {
-        debugger
+        
         getAllRecommendedJobs(page).then((res) => {
             if (res.status) {
                 setTimeout(() => {
@@ -314,7 +314,7 @@ export default class RecommendedJobs extends Component {
     };
 
     render() {
-        const { toastContent,showShimmer } = this.state;
+        const { toastContent, showShimmer } = this.state;
         return (
             <React.Fragment>
                 <Head >
@@ -347,7 +347,7 @@ export default class RecommendedJobs extends Component {
                     <meta name="twitter:data2" content="Career Advice, Career Insights" />
                     <meta name="twitter:site" content="@rozgar_india" />
                 </Head>
-               
+
                 <main id="rg-main" className="rg-main rg-haslayout pt-0">
                     <div className="rg-sectionspace rg-haslayout pt-0">
                         <div className="rozgar-jobbylocsearch pt-2 pb-2">
@@ -368,7 +368,7 @@ export default class RecommendedJobs extends Component {
                                                     ''
                                             }
 
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -416,7 +416,7 @@ export default class RecommendedJobs extends Component {
                                                                 </div>
                                                             </div>
                                                         )}
-                                                          
+
                                                         {this.state.list && this.state.list == 0 && (
                                                             <div
                                                                 className="rg-featurejob text-danger pt-20"
@@ -480,246 +480,257 @@ export default class RecommendedJobs extends Component {
                                                                 </Link>
                                                             </div>
                                                         )}
-                                                       {showShimmer? <Loader/>:
-                                                        <div className="row">
-                                                            <div className="col-md-12">
-                                                                {
+                                                        {showShimmer ? <Loader /> :
+                                                            <div className="row">
+                                                                <div className="col-md-12">
+                                                                    {
 
-                                                                
-                                                                this.state.list &&
-                                                                    this.state.list.map((data) => {
-                                                                        var a = moment([
-                                                                            parseInt(
-                                                                                moment(data.CREATED_ON).format("YYYY")
-                                                                            ),
-                                                                            parseInt(
-                                                                                moment(data.CREATED_ON).format("MM")
-                                                                            ),
-                                                                            parseInt(
-                                                                                moment(data.CREATED_ON).format("DD")
-                                                                            ),
-                                                                        ]);
-                                                                        var b = moment([
-                                                                            parseInt(moment().format("YYYY")),
-                                                                            parseInt(moment().format("MM")),
-                                                                            parseInt(moment().format("DD")),
-                                                                        ]);
-                                                                        var days = b.diff(a, "days");
-                                                                       
-                                                                        let dynamicURLOne = ToSeoUrl(data.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(data.JOB_TITLE) + '-' + data.JOB_ID
-                                                                        dynamicURLOne = dynamicURLOne.replace(/ /g, '')
-                                                                        return (
-                                                                            <div className="rg-featurejobholder">
-                                                                                <div className="rg-featurejob">
-                                                                                    <figure className="rg-companyimg">
-                                                                                        {data.COMPANY_LOGO === "NA" ? (
-                                                                                            <h6 style={{ marginBottom: "0" }}>
-                                                                                                {data.COMPANY_NAME.split(" ")
-                                                                                                    .length === 1
-                                                                                                    ? data.COMPANY_NAME.slice(
-                                                                                                        0,
-                                                                                                        1
-                                                                                                    )
-                                                                                                    : data.COMPANY_NAME.split(" ")
-                                                                                                        .map((i) =>
-                                                                                                            i.substring(0, 1)
+
+                                                                        this.state.list &&
+                                                                        this.state.list.map((data) => {
+                                                                            var a = moment([
+                                                                                parseInt(
+                                                                                    moment(data.CREATED_ON).format("YYYY")
+                                                                                ),
+                                                                                parseInt(
+                                                                                    moment(data.CREATED_ON).format("MM")
+                                                                                ),
+                                                                                parseInt(
+                                                                                    moment(data.CREATED_ON).format("DD")
+                                                                                ),
+                                                                            ]);
+                                                                            var b = moment([
+                                                                                parseInt(moment().format("YYYY")),
+                                                                                parseInt(moment().format("MM")),
+                                                                                parseInt(moment().format("DD")),
+                                                                            ]);
+                                                                            var days = b.diff(a, "days");
+
+                                                                            let dynamicURLOne = ToSeoUrl(data.CITY.trim().split(',')[0]) + '/' + ToSeoUrl(data.JOB_TITLE) + '-' + data.JOB_ID
+                                                                            dynamicURLOne = dynamicURLOne.replace(/ /g, '')
+                                                                            return (
+                                                                                <div className="rg-featurejobholder">
+                                                                                    <div className="rg-featurejob">
+                                                                                        <figure className="rg-companyimg">
+                                                                                            {data.COMPANY_LOGO === "NA" ? (
+                                                                                                <h6 style={{ marginBottom: "0" }}>
+                                                                                                    {data.COMPANY_NAME.split(" ")
+                                                                                                        .length === 1
+                                                                                                        ? data.COMPANY_NAME.slice(
+                                                                                                            0,
+                                                                                                            1
                                                                                                         )
-                                                                                                        .join("")
-                                                                                                        .slice(0, 3)}
-                                                                                            </h6>
-                                                                                        ) : (
-                                                                                            <Image
-                                                                                                src={`${process.env.NEXT_PUBLIC_BASE_URL}/company/logo/${data.COMPANY_LOGO}`}
-                                                                                                alt={data.COMPANY_NAME}
-                                                                                                width={100}
-                                                                                                height={80}
-                                                                                            />
-                                                                                        )}
-                                                                                    </figure>
-                                                                                    
-                                                                                    <div className="rg-companycontent">
-                                                                                        <div className="rg-companyhead">
+                                                                                                        : data.COMPANY_NAME.split(" ")
+                                                                                                            .map((i) =>
+                                                                                                                i.substring(0, 1)
+                                                                                                            )
+                                                                                                            .join("")
+                                                                                                            .slice(0, 3)}
+                                                                                                </h6>
+                                                                                            ) : (
+                                                                                                <Image
+                                                                                                    src={`${process.env.NEXT_PUBLIC_BASE_URL}/company/logo/${data.COMPANY_LOGO}`}
+                                                                                                    alt={data.COMPANY_NAME}
+                                                                                                    width={100}
+                                                                                                    height={80}
+                                                                                                />
+                                                                                            )}
+                                                                                        </figure>
+
+                                                                                        <div className="rg-companycontent">
+                                                                                            <div className="rg-companyhead">
+                                                                                                <div className="rg-rightarea">
+                                                                                                    <a
+                                                                                                        className="rg-tagfeature"
+                                                                                                        href="javascript:void(0);"
+                                                                                                    >
+                                                                                                        <i className="fa fa-clock"></i>{" "}
+                                                                                                        Posted{" "}
+                                                                                                        {
+                                                                                                            getDateParts(
+                                                                                                                data.CREATED_ON
+                                                                                                            ).relativeTime
+                                                                                                        }
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div className="rg-companyname">
+                                                                                                <h3>
+                                                                                                    <a
+                                                                                                        target="_blank"
+                                                                                                        href={constant.component.jobdetails.url.replace(
+                                                                                                            ":url",
+                                                                                                            dynamicURLOne
+                                                                                                        )}
+                                                                                                    >
+                                                                                                        {data.JOB_TITLE}
+                                                                                                    </a>
+                                                                                                </h3>
+                                                                                                <h6>{data.COMPANY_NAME}</h6>
+                                                                                                <div className="companyreviewbox">
+                                                                                                    <a href="#">
+                                                                                                        <span></span>
+                                                                                                    </a>
+                                                                                                    <span></span>
+                                                                                                    <span className="reviewnumber">
+                                                                                                        {" "}
+                                                                                                        <i className="fa fa-star"></i>
+                                                                                                    </span>
+                                                                                                    <a href="#">
+                                                                                                        <span className="reviewlink">
+                                                                                                            ({data.REVIEW_COUNT ? data.REVIEW_COUNT : 0} Reviews)
+                                                                                                        </span>
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div className="rg-description">
+                                                                                                <p>
+                                                                                                    {" "}
+                                                                                                    <span>
+                                                                                                        {" "}
+                                                                                                        {data.JOB_DETAILS.length === 0
+                                                                                                            ? "No Discription Found"
+                                                                                                            : data.JOB_DETAILS.length >
+                                                                                                                116
+                                                                                                                ? `${data.JOB_DETAILS.slice(
+                                                                                                                    0,
+                                                                                                                    116
+                                                                                                                )}...`
+                                                                                                                : data.JOB_DETAILS}
+                                                                                                    </span>
+                                                                                                </p>
+                                                                                                <ul className="skilllist">
+                                                                                                    <span>
+                                                                                                        {" "}
+                                                                                                        {data.KEYWORDS.length > 60
+                                                                                                            ? `${data.KEYWORDS.split(',').join(', ').slice(
+                                                                                                                0,
+                                                                                                                60
+                                                                                                            )}...`
+                                                                                                            : data.KEYWORDS.split(',').join(', ')}
+                                                                                                    </span>
+                                                                                                </ul>
+                                                                                            </div>
                                                                                             <div className="rg-rightarea">
                                                                                                 <a
-                                                                                                    className="rg-tagfeature"
+                                                                                                    className="rg-btnjobtag rg-fulltimejob mr-10"
                                                                                                     href="javascript:void(0);"
                                                                                                 >
-                                                                                                    <i className="fa fa-clock"></i>{" "}
-                                                                                                    Posted{" "}
-                                                                                                    {
-                                                                                                        getDateParts(
-                                                                                                            data.CREATED_ON
-                                                                                                        ).relativeTime
-                                                                                                    }
-                                                                                                </a>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div className="rg-companyname">
-                                                                                            <h3>
-                                                                                                <a
-                                                                                                    target="_blank"
-                                                                                                    href={constant.component.jobdetails.url.replace(
-                                                                                                        ":url",
-                                                                                                        dynamicURLOne
-                                                                                                    )}
-                                                                                                >
-                                                                                                    {data.JOB_TITLE}
-                                                                                                </a>
-                                                                                            </h3>
-                                                                                            <h6>{data.COMPANY_NAME}</h6>
-                                                                                            <div className="companyreviewbox">
-                                                                                                <a href="#">
-                                                                                                    <span></span>
-                                                                                                </a>
-                                                                                                <span></span>
-                                                                                                <span className="reviewnumber">
-                                                                                                    {" "}
-                                                                                                    <i className="fa fa-star"></i>
-                                                                                                </span>
-                                                                                                <a href="#">
-                                                                                                    <span className="reviewlink">
-                                                                                                    ({data.REVIEW_COUNT ? data.REVIEW_COUNT : 0} Reviews)
-                                                                                                    </span>
-                                                                                                </a>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div className="rg-description">
-                                                                                            <p>
-                                                                                                {" "}
-                                                                                                <span>
-                                                                                                    {" "}
-                                                                                                    {data.JOB_DETAILS.length === 0
-                                                                                                        ? "No Discription Found"
-                                                                                                        : data.JOB_DETAILS.length >
-                                                                                                            116
-                                                                                                            ? `${data.JOB_DETAILS.slice(
-                                                                                                                0,
-                                                                                                                116
-                                                                                                            )}...`
-                                                                                                            : data.JOB_DETAILS}
-                                                                                                </span>
-                                                                                            </p>
-                                                                                            <ul className="skilllist">
-                                                                                                <span>
-                                                                                                    {" "}
-                                                                                                    {data.KEYWORDS.length > 60
-                                                                                                        ? `${data.KEYWORDS.slice(
-                                                                                                            0,
-                                                                                                            60
-                                                                                                        )}...`
-                                                                                                        : data.KEYWORDS}
-                                                                                                </span>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="rg-rightarea">
-                                                                                            <a
-                                                                                                className="rg-btnjobtag rg-fulltimejob mr-10"
-                                                                                                href="javascript:void(0);"
-                                                                                            >
-                                                                                                <i className="ti-crown"></i> {data.LISTNING_TYPE == 1 ? ' REGULAR' : data.LISTNING_TYPE == 2 ? ' FEATURED' : ' PREMIUM'}
+                                                                                                    <i className="ti-crown"></i> {data.LISTNING_TYPE == 1 ? ' REGULAR' : data.LISTNING_TYPE == 2 ? ' FEATURED' : ' PREMIUM'}
 
-                                                                                            </a>
-                                                                                            {
-                                                                                                !this.state.saveList.includes(data.JOB_ID)
-                                                                                                    ?
-                                                                                                    <a className="rg-tagfeature" href="javascript:void(0);" onClick={() => this.onClickSave(data.JOB_ID)} style={{ cursor: 'pointer', fontSize: '1em' }}><i className="fa fa-star fa-sm"></i> Save</a>
-                                                                                                    :
-                                                                                                    <a className="rg-tagfeature" href="javascript:void(0);" onClick={() => this.onClickUnSave(data.JOB_ID)} style={{ cursor: 'pointer', fontSize: '1em' }}><i className="fa fa-star fa-sm" style={{ color: '#eea21d' }}></i> Saved</a>
-                                                                                            }
+                                                                                                </a>
+                                                                                                {
+                                                                                                    !this.state.saveList.includes(data.JOB_ID)
+                                                                                                        ?
+                                                                                                        <a className="rg-tagfeature" href="javascript:void(0);" onClick={() => this.onClickSave(data.JOB_ID)} style={{ cursor: 'pointer', fontSize: '1em' }}><i className="fa fa-star fa-sm"></i> Save</a>
+                                                                                                        :
+                                                                                                        <a className="rg-tagfeature" href="javascript:void(0);" onClick={() => this.onClickUnSave(data.JOB_ID)} style={{ cursor: 'pointer', fontSize: '1em' }}><i className="fa fa-star fa-sm" style={{ color: '#eea21d' }}></i> Saved</a>
+                                                                                                }
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
+                                                                                    <ul className="rg-professionalinfo">
+                                                                                        <li>
+                                                                                            <i className="lnr lnr-briefcase"></i>
+                                                                                            <span className="pr-10">
+                                                                                                {" "}
+                                                                                                {data.WORK_EXP_MAX <= 1
+                                                                                                    ? `${data.WORK_EXP_MIN} - ${data.WORK_EXP_MAX} Year`
+                                                                                                    : `${data.WORK_EXP_MIN} - ${data.WORK_EXP_MAX} Years`}
+                                                                                            </span>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i className="fa fa-rupee"></i>
+                                                                                            <span>
+                                                                                                {" "}
+                                                                                                {/* {data.CTC_MIN === "" && data.CTC_MAX === ""
+                                                                                                    ? "Not Disclosed"
+                                                                                                    : `${data.CTC_MIN >= 100000 ? (data.CTC_MIN / 100000).toFixed(1).replace('.0', '') : data.CTC_MIN >= 1000 ? (data.CTC_MIN / 1000).toFixed(1).replace('.0', '') + ' K' : data.CTC_MIN} - ${data.CTC_MAX >= 100000 ? (data.CTC_MAX / 100000).toFixed(1).replace('.0', '') + ' L' : data.CTC_MAX >= 1000 ? (data.CTC_MAX / 1000).toFixed(1).replace('.0', '') + 'K' : data.CTC_MAX}`} */}
+
+                                                                                                {
+                                                                                                    data.CTC_MIN === "" && data.CTC_MAX === ""
+                                                                                                        ? "Not Disclosed"
+                                                                                                        : `${data.CTC_MIN >= 100000
+                                                                                                            ? (data.CTC_MIN / 100000).toFixed(1).replace('.0', '')
+                                                                                                            : data.CTC_MIN
+                                                                                                        } - ${data.CTC_MAX >= 100000
+                                                                                                            ? (data.CTC_MAX / 100000).toFixed(1).replace('.0', '') + " Lacs"
+                                                                                                            : data.CTC_MAX
+                                                                                                        } PA`
+                                                                                                }
+                                                                                            </span>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i className="lnr lnr-map-marker"></i>
+                                                                                            <span>
+                                                                                                {data.IS_WORK_FROM_HOME === "N"
+                                                                                                    ? data.CITY
+                                                                                                    : "Remote"}
+                                                                                            </span>
+                                                                                        </li>
+                                                                                    </ul>
                                                                                 </div>
-                                                                                <ul className="rg-professionalinfo">
-                                                                                    <li>
-                                                                                        <i className="lnr lnr-briefcase"></i>
-                                                                                        <span className="pr-10">
-                                                                                            {" "}
-                                                                                            {data.WORK_EXP_MAX <= 1
-                                                                                                ? `${data.WORK_EXP_MIN} - ${data.WORK_EXP_MAX} Year`
-                                                                                                : `${data.WORK_EXP_MIN} - ${data.WORK_EXP_MAX} Years`}
-                                                                                        </span>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i className="fa fa-rupee"></i>
-                                                                                        <span>
-                                                                                            {" "}
-                                                                                            {data.CTC_MIN === "" &&
-                                                                                                data.CTC_MAX === ""
-                                                                                                ? "Not Disclosed"
-                                                                                                : `${data.CTC_MIN} - ${data.CTC_MAX}`}
-                                                                                        </span>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i className="lnr lnr-map-marker"></i>
-                                                                                        <span>
-                                                                                            {data.IS_WORK_FROM_HOME === "N"
-                                                                                                ? data.STATE
-                                                                                                : "Remote"}
-                                                                                        </span>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        );
-                                                                    })}
-                                                            </div>
-                                                        </div>}
+                                                                            );
+                                                                        })}
+                                                                </div>
+                                                            </div>}
                                                     </div>
                                                     <div className="col-md-4">
                                                         <div className="savejobs-aside">
-                                                       
-                                                            {showShimmer? <Loaders/>:
-                                                            <ul>
-                                                                <li>
-                                                                    <Link href="/featured-jobs">
-                                                                        <i class="ti-bookmark"></i>
-                                                                        <span style={{ color: "#000" }}>
-                                                                            Featured Job
-                                                                        </span>{" "}
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link href="/premium-jobs">
-                                                                        <i class="lnr lnr-bullhorn"></i>
-                                                                        <span style={{ color: "#000" }}>
-                                                                            Premium Job
-                                                                        </span>{" "}
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link href="/interview-questions">
-                                                                        <i className="ti-crown"></i>
-                                                                        <span style={{ color: "#000" }}>
-                                                                            Interview Question
-                                                                        </span>{" "}
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link href="/top-companies">
-                                                                        <i class="lnr lnr-apartment"></i>{" "}
-                                                                        <span style={{ color: "#000" }}>
-                                                                            Top Companies
-                                                                        </span>{" "}
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link href="/fresher-jobs">
-                                                                        <i className="lnr lnr-graduation-hat"></i>
-                                                                        <span style={{ color: "#000" }}>
-                                                                            Freshers Jobs
-                                                                        </span>{" "}
-                                                                    </Link>
-                                                                </li>
-                                                                <li><Link href="/browse-jobs"><i class="lnr lnr-checkmark-circle"></i><span style={{ color: '#000' }}>All Jobs</span> </Link></li>
 
-                                                                <li>
-                                                                    <Link href={constant.component.workabroad.url}>
-                                                                        <i class="fa fa-plane"></i>
-                                                                        <span style={{ color: "#000" }}>
-                                                                            International Jobs
-                                                                        </span>{" "}
-                                                                    </Link>
-                                                                </li>
-                                                            </ul>}
+                                                            {showShimmer ? <Loaders /> :
+                                                                <ul>
+                                                                    <li>
+                                                                        <Link href="/featured-jobs">
+                                                                            <i class="ti-bookmark"></i>
+                                                                            <span style={{ color: "#000" }}>
+                                                                                Featured Job
+                                                                            </span>{" "}
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/premium-jobs">
+                                                                            <i class="lnr lnr-bullhorn"></i>
+                                                                            <span style={{ color: "#000" }}>
+                                                                                Premium Job
+                                                                            </span>{" "}
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/interview-questions">
+                                                                            <i className="ti-crown"></i>
+                                                                            <span style={{ color: "#000" }}>
+                                                                                Interview Question
+                                                                            </span>{" "}
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/top-companies">
+                                                                            <i class="lnr lnr-apartment"></i>{" "}
+                                                                            <span style={{ color: "#000" }}>
+                                                                                Top Companies
+                                                                            </span>{" "}
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/fresher-jobs">
+                                                                            <i className="lnr lnr-graduation-hat"></i>
+                                                                            <span style={{ color: "#000" }}>
+                                                                                Freshers Jobs
+                                                                            </span>{" "}
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li><Link href="/browse-jobs"><i class="lnr lnr-checkmark-circle"></i><span style={{ color: '#000' }}>All Jobs</span> </Link></li>
+
+                                                                    <li>
+                                                                        <Link href={constant.component.workabroad.url}>
+                                                                            <i class="fa fa-plane"></i>
+                                                                            <span style={{ color: "#000" }}>
+                                                                                International Jobs
+                                                                            </span>{" "}
+                                                                        </Link>
+                                                                    </li>
+                                                                </ul>}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -750,27 +761,27 @@ export default class RecommendedJobs extends Component {
                     </div>
                 </main>
 
-                 
+
                 {Array.isArray(this.state.question) && this.state.question.length > 0 && (
-                     <QuestionModel
-                       JOB_WITH_CD_DETAIL={this.state.addUpdate?this.state.addUpdate:undefined}
+                    <QuestionModel
+                        JOB_WITH_CD_DETAIL={this.state.addUpdate ? this.state.addUpdate : undefined}
                         open={this.state.isOpen}
-                        close={() => this.closeModel() }
+                        close={() => this.closeModel()}
                         type={"Questions"}
                         question={this.state.question}
-                        apply={(model , cvl_model={} ) => this.applyJobsWithQuestion(model, cvl_model)}
+                        apply={(model, cvl_model = {}) => this.applyJobsWithQuestion(model, cvl_model)}
                     />
                 )}
-                 
-                  {
+
+                {
                     <ResumeModel
                         open={this.state.isresumePopUp}
                         close={() => this.closeModel()}
                         type={'Upload/Update Resume'}
                         apply={(model) => this.applyJobs(model)}
-                     />
+                    />
                 }
-                
+
             </React.Fragment>
         );
     }

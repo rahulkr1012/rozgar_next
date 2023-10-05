@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import FilteredHeader from 'components/Filtered_Header'
 import dynamic from "next/dynamic";
 import { ToSeoUrl } from '@/utils';
+import { jobFaq } from '@/actions/jobsByAction';
 const Loader = dynamic(() => import("components/Loader"), {
     ssr: false,
 });
@@ -27,7 +28,8 @@ export default class index extends Component {
             CITIES: [],
             TOP_COMPANY_IMAGES: [],
             locatlities: [] ,
-            ud:this.props.ud
+            ud:this.props.ud,
+            Job_FAQ_List:''
         }
 
     }
@@ -35,7 +37,12 @@ export default class index extends Component {
         document.title = constant.title.PartTimeJoblist
         window.scrollTo(0, 0)
         this.setState({ JOB_LIST: this.props.JOB_LIST, JOB_COUNT: this.props.JOB_COUNT })
-
+        jobFaq({KEYWORD:'part-time'}).then((res) => {
+            this.setState({
+                Job_FAQ_List: res.result.list});
+        }).catch((err) => {
+            console.log(err)
+        })
         // this.joblist(this.state.CURRENT_PAGE, {})
         // isLocationUrl(this.props.match.params.url).then(res => {
         //     if (res.status) {
@@ -80,7 +87,7 @@ export default class index extends Component {
         this.joblist(1, data)
     }
   render() {
-    const { JOB_LIST, JOB_COUNT, CURRENT_PAGE, aboutJobName, isLocation, CITIES, TOP_COMPANY_IMAGES, locatlities,latestfresherjobs } = this.state
+    const { JOB_LIST, JOB_COUNT, CURRENT_PAGE, aboutJobName, isLocation, CITIES, TOP_COMPANY_IMAGES, locatlities,latestfresherjobs ,Job_FAQ_List} = this.state
 
     return (
      <React.Fragment>
@@ -116,6 +123,7 @@ export default class index extends Component {
        
         <Joblists
                     hideExperience={true}
+                    Job_FAQ_List={Job_FAQ_List}
                     JOB_LIST={JOB_LIST}
                     JOB_COUNT={JOB_COUNT}
                     joblist={(page, data) => { this.joblist(page, data) }}
